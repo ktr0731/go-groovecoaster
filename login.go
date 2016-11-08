@@ -16,9 +16,12 @@ import (
 func TryLogin() (*http.Client, error) {
 	const loginURL = "https://mypage.groovecoaster.jp/sp/login/auth_con.php"
 
-	err := godotenv.Load()
-	if err != nil {
-		return nil, err
+	_, err := os.Stat(".env")
+	if err == nil {
+		err := godotenv.Load()
+		if err != nil {
+			return nil, err
+		}
 	}
 
 	v := url.Values{}
