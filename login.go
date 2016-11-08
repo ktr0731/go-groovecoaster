@@ -2,7 +2,6 @@ package groovecoaster
 
 import (
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
 	"net/url"
@@ -43,11 +42,6 @@ func TryLogin() (*http.Client, error) {
 	} else if strings.Contains(url, "login_stop") {
 		return nil, fmt.Errorf("Login attempts limit exceed")
 	}
-	fmt.Println("OK")
-
-	res, err = client.Get("https://mypage.groovecoaster.jp/sp/json/player_data.php")
-	body, _ := ioutil.ReadAll(res.Body)
-	fmt.Println(string(body))
 
 	return &client, nil
 }
