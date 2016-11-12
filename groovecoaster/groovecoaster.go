@@ -8,8 +8,7 @@ import (
 
 // APIClient is the structure that represents Groove Coaster client
 type APIClient struct {
-	client   *http.Client
-	personal *Personal
+	client *http.Client
 }
 
 // New creates a groovecoaster client
@@ -20,7 +19,6 @@ func New() *APIClient {
 	}
 
 	return &APIClient{
-		client:   client,
-		personal: FetchPersonal(),
+		client: client,
 	}
 }

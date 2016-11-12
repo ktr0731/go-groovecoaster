@@ -16,12 +16,19 @@ import (
 func TryLogin() (*http.Client, error) {
 	const loginURL = "https://mypage.groovecoaster.jp/sp/login/auth_con.php"
 
+	const nesicaCardId = "NESICA_CARD_ID"
+	const nesicaPassword = "NESICA_PASSWORD"
+
 	_, err := os.Stat(".env")
 	if err == nil {
 		err := godotenv.Load()
 		if err != nil {
 			return nil, err
 		}
+	}
+
+	if os.Getenv(nesicaCardId) == "" || os.Getenv(nesicaPassword) == "" {
+		return nil, fmt.Errorf("NESiCA ID or password not found")
 	}
 
 	v := url.Values{}
