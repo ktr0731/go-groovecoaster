@@ -1,0 +1,3 @@
+test:
+  override:
+    - cd groovecoaster && go test -v -race
