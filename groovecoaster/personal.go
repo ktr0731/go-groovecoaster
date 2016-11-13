@@ -1,5 +1,7 @@
 package groovecoaster
 
+import "fmt"
+
 // Statistics is the structure that represent stage statistics of all musics
 type Statistics struct {
 	All       int
@@ -46,6 +48,10 @@ func (p *APIClient) Personal() (*Personal, error) {
 	var pd playerData
 	p.unmarshal(data, &pd)
 
+	if pd.Personal == nil {
+		return nil, fmt.Errorf("Invalid JSON structure")
+	}
+
 	return pd.Personal, nil
 }
 
@@ -60,6 +66,10 @@ func (p *APIClient) Statistics() (*Statistics, error) {
 
 	var pd playerData
 	p.unmarshal(data, &pd)
+
+	if pd.Statistics == nil {
+		return nil, fmt.Errorf("Invalid JSON structure")
+	}
 
 	return pd.Statistics, nil
 }
