@@ -1,7 +1,6 @@
 package groovecoaster
 
 import (
-	"fmt"
 	"io/ioutil"
 	"testing"
 
@@ -23,9 +22,24 @@ func TestAPIMusicList(t *testing.T) {
 		httpmock.NewBytesResponder(200, data),
 	)
 
-	p, err := testClient.MusicList()
+	_, err = testClient.MusicList()
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(p)
+}
+
+func TestAPIMusicList_BadStatus(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/music_list.php",
+		httpmock.NewStringResponder(500, ""),
+	)
+
+	_, err := testClient.MusicList()
+	if err == nil {
+		t.Error(err)
+	}
 }
