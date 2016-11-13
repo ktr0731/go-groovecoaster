@@ -31,16 +31,15 @@ type Personal struct {
 }
 
 type playerData struct {
-	Status     int
 	Personal   *Personal   `json:"player_data"`
 	Statistics *Statistics `json:"stage"`
 }
 
 // Personal fetch player profile
 func (p *APIClient) Personal() (*Personal, error) {
-	const personal = "mypage.groovecoaster.jp/sp/json/player_data.php"
+	const uri = "mypage.groovecoaster.jp/sp/json/player_data.php"
 
-	data, err := p.get(personal)
+	data, err := p.get(uri)
 	if err != nil {
 		return nil, err
 	}
@@ -57,9 +56,9 @@ func (p *APIClient) Personal() (*Personal, error) {
 
 // Statistics fetch music statistics
 func (p *APIClient) Statistics() (*Statistics, error) {
-	const statistics = "mypage.groovecoaster.jp/sp/json/player_data.php"
+	const uri = "mypage.groovecoaster.jp/sp/json/player_data.php"
 
-	data, err := p.get(statistics)
+	data, err := p.get(uri)
 	if err != nil {
 		return nil, err
 	}
