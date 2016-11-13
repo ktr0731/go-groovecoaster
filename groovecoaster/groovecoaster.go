@@ -41,6 +41,10 @@ func (c *APIClient) get(uri string) ([]byte, error) {
 		return nil, err
 	}
 
+	if len(data) == 0 {
+		return nil, fmt.Errorf("Response body is empty")
+	}
+
 	return data, nil
 }
 

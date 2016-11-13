@@ -1,0 +1,28 @@
+{
+  "status": 0,
+  "player_data": {
+    "player_name": "MakiseKurisu",
+    "total_score": "428126368",
+    "total_play_music": 233,
+    "total_music": 414,
+    "rank": 3064,
+    "level": 43,
+    "avatar": "SAKUYA",
+    "title": "Master ID",
+    "total_trophy": "43",
+    "trophy_rank": "3753",
+    "average_score": "863194",
+    "version": "30802",
+    "friendApplication": false
+  },
+  "stage": {
+    "all": 1304,
+    "clear": 463,
+    "nomiss": 292,
+    "fullchain": 107,
+    "perfect": 1,
+    "s": 285,
+    "ss": 88,
+    "sss": 7
+  }
+}
