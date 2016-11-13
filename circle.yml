@@ -1,3 +1,5 @@
 test:
+  pre:
+    - go get github.com/jarcoal/httpmock
   override:
     - cd groovecoaster && go test -v -race
