@@ -1,0 +1,78 @@
+{
+  "status": 0,
+  "music_detail": {
+    "music_id": "509",
+    "music_title": "シュガーソングとビターステップ",
+    "artist": "UNISON SQUARE GARDEN",
+    "skin_name": "DEFAULT",
+    "ex_flag": 0,
+    "simple_result_data": {
+      "rating": "S++",
+      "no_miss": 1,
+      "full_chain": 1,
+      "perfect": 0,
+      "play_count": 1,
+      "is_clear_mark": false,
+      "is_failed_mark": false,
+      "music_level": "SIMPLE",
+      "score": 991481,
+      "max_chain": 1242,
+      "adlib": 10
+    },
+    "normal_result_data": {
+      "rating": "S+",
+      "no_miss": 1,
+      "full_chain": 1,
+      "perfect": 0,
+      "play_count": 1,
+      "is_clear_mark": false,
+      "is_failed_mark": false,
+      "music_level": "NORMAL",
+      "score": 961168,
+      "max_chain": 1877,
+      "adlib": 7
+    },
+    "hard_result_data": {
+      "rating": "S",
+      "no_miss": 2,
+      "full_chain": 1,
+      "perfect": 0,
+      "play_count": 3,
+      "is_clear_mark": false,
+      "is_failed_mark": false,
+      "music_level": "HARD",
+      "score": 925563,
+      "max_chain": 2363,
+      "adlib": 11
+    },
+    "extra_result_data": null,
+    "user_rank": [
+      {
+        "rank": 823,
+        "difficulty": 0
+      },
+      {
+        "rank": 929,
+        "difficulty": 1
+      },
+      {
+        "rank": 1799,
+        "difficulty": 2
+      },
+      null
+    ],
+    "difficulty": [
+      {
+        "music_difficulty": 0
+      },
+      {
+        "music_difficulty": 1
+      },
+      {
+        "music_difficulty": 2
+      }
+    ],
+    "fav_flg": 0,
+    "message": null
+  }
+}

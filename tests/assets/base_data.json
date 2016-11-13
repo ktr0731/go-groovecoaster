@@ -1,0 +1,18 @@
+{
+  "status": 0,
+  "base": {
+    "player_data": {
+      "version": "30802",
+      "level": 43
+    },
+    "shop_data": {
+      "music_sale": 0,
+      "item_sale": 0,
+      "avatar_sale": 0,
+      "skin_sale": 0,
+      "message_sale": 0,
+      "sound_sale": 0,
+      "open_flg": true
+    }
+  }
+}
