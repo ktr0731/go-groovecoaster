@@ -1,11 +1,5 @@
 package groovecoaster
 
-import (
-	"encoding/json"
-	"fmt"
-	"net/http"
-)
-
 // Statistics is the structure that represent stage statistics of all musics
 type Statistics struct {
 	All       int
@@ -42,44 +36,30 @@ type playerData struct {
 
 // Personal fetch player profile
 func (p *APIClient) Personal() (*Personal, error) {
-	const personal = "https://mypage.groovecoaster.jp/sp/json/player_data.php"
+	const personal = "mypage.groovecoaster.jp/sp/json/player_data.php"
 
-	res, err := p.client.Get(personal)
+	data, err := p.get(personal)
 	if err != nil {
 		return nil, err
 	}
-	defer res.Body.Close()
-
-	if res.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("Fetch personal information failed")
-	}
 
 	var pd playerData
-	if err := json.NewDecoder(res.Body).Decode(&pd); err != nil {
-		return nil, fmt.Errorf("Player data unmarshal failed: %s", err)
-	}
+	p.unmarshal(data, &pd)
 
 	return pd.Personal, nil
 }
 
 // Statistics fetch music statistics
 func (p *APIClient) Statistics() (*Statistics, error) {
-	const statistics = "https://mypage.groovecoaster.jp/sp/json/player_data.php"
+	const statistics = "mypage.groovecoaster.jp/sp/json/player_data.php"
 
-	res, err := p.client.Get(statistics)
+	data, err := p.get(statistics)
 	if err != nil {
 		return nil, err
 	}
-	defer res.Body.Close()
-
-	if res.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("Fetch music statistics failed")
-	}
 
 	var pd playerData
-	if err := json.NewDecoder(res.Body).Decode(&pd); err != nil {
-		return nil, fmt.Errorf("Player data unmarshal failed: %s", err)
-	}
+	p.unmarshal(data, &pd)
 
 	return pd.Statistics, nil
 }
