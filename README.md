@@ -23,9 +23,9 @@ $ go get github.com/lycoris0731/go-groovecoaster/groovecoaster
 ``` go
 gc, err := groovecoaster.New()
 
-personal := gc.Personal()
-musicList := gc.MusicList()
-music := gc.Music(509) // Music ID
+gc.Personal()
+gc.MusicList()
+gc.Music(509) // Music ID
 ```
 
 ## License
