@@ -6,12 +6,12 @@ import "fmt"
 type Statistics struct {
 	All       int
 	Clear     int
-	Fullchain int
-	Nomiss    int
+	FullChain int
+	NoMiss    int
 	Perfect   int
 	S         int
-	Ss        int
-	Sss       int
+	SS        int
+	SSS       int
 }
 
 // Personal is the structure that represent personal configration
