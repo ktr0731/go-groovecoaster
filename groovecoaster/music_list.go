@@ -2,7 +2,7 @@ package groovecoaster
 
 import "fmt"
 
-// MusicSummary is the structure that represent a row of music list
+// MusicSummary is the structure that represents a row of music list
 type MusicSummary struct {
 	MusicID      int    `json:"music_id"`
 	MusicTitle   string `json:"music_title"`
@@ -14,7 +14,7 @@ type musicList struct {
 	MusicList []MusicSummary `json:"music_list"`
 }
 
-// MusicList fetch all music name by array
+// MusicList fetches all musics name by array
 func (p *APIClient) MusicList() ([]MusicSummary, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/music_list.php"
 

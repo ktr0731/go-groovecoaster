@@ -5,12 +5,7 @@ import (
 	"strconv"
 )
 
-// Rank is rank each difficulty
-type Rank struct {
-	Rank int
-}
-
-// Result is the structure that represent music result each difficulty
+// Result is the structure that represents music result each difficulty
 type Result struct {
 	Rank      int
 	IsClear   bool `json:"is_clear_mark"`
@@ -25,7 +20,7 @@ type Result struct {
 	Rating    string
 }
 
-// Detail .
+// Detail is the structure that represents a music detail
 type Detail struct {
 	ID         string `json:"music_id"`
 	Title      string `json:"music_title"`
@@ -42,17 +37,19 @@ type Detail struct {
 
 type tmp struct {
 	MusicDetail struct {
-		ExFlag int    `json:"ex_flag"`
-		Rank   []Rank `json:"user_rank"`
+		ExFlag int `json:"ex_flag"`
+		Rank   []struct {
+			Rank int
+		} `json:"user_rank"`
 	} `json:"music_detail"`
 }
 
-// MusicDetail .
+// MusicDetail is a wrapper type of JSON
 type MusicDetail struct {
 	Detail `json:"music_detail"`
 }
 
-// Music fetch a music detail by music id
+// Music fetches a music detail by music id
 func (c *APIClient) Music(id int) (*MusicDetail, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/music_detail.php?music_id="
 

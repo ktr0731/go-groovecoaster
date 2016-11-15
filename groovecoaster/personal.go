@@ -2,7 +2,7 @@ package groovecoaster
 
 import "fmt"
 
-// Statistics is the structure that represent stage statistics of all musics
+// Statistics is the structure that represents stage statistics of all musics
 type Statistics struct {
 	All       int
 	Clear     int
@@ -14,7 +14,7 @@ type Statistics struct {
 	SSS       int
 }
 
-// Personal is the structure that represent personal configration
+// Personal is the structure that represents personal configration
 type Personal struct {
 	AverageScore      string `json:"average_score"`
 	Avatar            string
@@ -35,7 +35,7 @@ type playerData struct {
 	Statistics *Statistics `json:"stage"`
 }
 
-// Personal fetch player profile
+// Personal fetches player profile
 func (p *APIClient) Personal() (*Personal, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/player_data.php"
 
@@ -54,7 +54,7 @@ func (p *APIClient) Personal() (*Personal, error) {
 	return pd.Personal, nil
 }
 
-// Statistics fetch music statistics
+// Statistics fetches music statistics
 func (p *APIClient) Statistics() (*Statistics, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/player_data.php"
 

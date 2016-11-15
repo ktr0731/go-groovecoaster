@@ -12,11 +12,11 @@ import (
 )
 
 // TryLogin will attempt login to mypage in GrooveCoaster
-// If login was successful, it return http.Client
+// If login was successful, it will return http.Client
 func TryLogin() (*http.Client, error) {
 	const loginURL = "https://mypage.groovecoaster.jp/sp/login/auth_con.php"
 
-	const nesicaCardId = "NESICA_CARD_ID"
+	const nesicaCardID = "NESICA_CARD_ID"
 	const nesicaPassword = "NESICA_PASSWORD"
 
 	_, err := os.Stat(".env")
@@ -27,7 +27,7 @@ func TryLogin() (*http.Client, error) {
 		}
 	}
 
-	if os.Getenv(nesicaCardId) == "" || os.Getenv(nesicaPassword) == "" {
+	if os.Getenv(nesicaCardID) == "" || os.Getenv(nesicaPassword) == "" {
 		return nil, fmt.Errorf("NESiCA ID or password not found")
 	}
 
