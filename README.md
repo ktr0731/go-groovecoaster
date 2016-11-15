@@ -4,13 +4,29 @@
 
 ===
 
+## **Attention**
+- go-groovecoaster is now developping...
+- Unofficial library. So don't abuse this. Please take full responsibility for your action.
+
 ## Description  
+Go-GrooveCoaster is an unofficial client library for GrooveCoaster.  
 
 ## Equipments
+- Go
 
 ## Installation
+``` sh
+$ go get github.com/lycoris0731/go-groovecoaster/groovecoaster
+```
 
 ## Usage
+``` go
+gc, err := groovecoaster.New()
+
+personal := gc.Personal()
+musicList := gc.MusicList()
+music := gc.Music(509) // Music ID
+```
 
 ## License
 Please see LICENSE.
