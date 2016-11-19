@@ -28,7 +28,7 @@ type RankingElement struct {
 
 type ranking struct {
 	Count   string
-	Ranking []*RankingElement `json:"scoe_rank"`
+	Ranking []*RankingElement `json:"score_rank"`
 }
 
 // MusicRankingPageCount fetches last page number by music id and difficulty
@@ -65,9 +65,9 @@ func (c *APIClient) MusicRanking(id int, diff Difficulty, page int) ([]*RankingE
 	}
 
 	var rd *ranking
-	c.unmarshal(data, rd)
+	c.unmarshal(data, &rd)
 
-	if rd == nil {
+	if rd.Ranking == nil {
 		return nil, fmt.Errorf("Invalid JSON structure")
 	}
 
