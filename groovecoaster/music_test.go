@@ -7,7 +7,7 @@ import (
 	"github.com/jarcoal/httpmock"
 )
 
-func TestAPIClientMusic(t *testing.T) {
+func TestMusic(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 

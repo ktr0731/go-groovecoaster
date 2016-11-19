@@ -1,14 +1,13 @@
 package groovecoaster
 
 import (
-	"fmt"
 	"io/ioutil"
 	"testing"
 
 	"github.com/jarcoal/httpmock"
 )
 
-func TestAPIClientMusicRankingPageCount(t *testing.T) {
+func TestMusicRankingPageCount(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -29,7 +28,7 @@ func TestAPIClientMusicRankingPageCount(t *testing.T) {
 	}
 }
 
-func TestAPIClientMusicRanking(t *testing.T) {
+func TestMusicRanking(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -44,9 +43,8 @@ func TestAPIClientMusicRanking(t *testing.T) {
 		httpmock.NewBytesResponder(200, data),
 	)
 
-	v, err := testClient.MusicRanking(290, Simple, 0)
+	_, err = testClient.MusicRanking(290, Simple, 0)
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(v[0].Name)
 }

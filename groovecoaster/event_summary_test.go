@@ -22,8 +22,40 @@ func TestEventSummary(t *testing.T) {
 		httpmock.NewBytesResponder(200, data),
 	)
 
-	v, err := testClient.EventSummary()
+	_, err = testClient.EventSummary()
 	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestEventSummary_EmptyBody(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/event_data.php",
+		httpmock.NewStringResponder(200, ""),
+	)
+
+	_, err := testClient.EventSummary()
+	if err == nil {
+		t.Error(err)
+	}
+}
+
+func TestEventSummary_InvalidJSON(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/event_data.php",
+		httpmock.NewStringResponder(200, `{"test": "test"}`),
+	)
+
+	_, err := testClient.EventSummary()
+	if err == nil {
 		t.Error(err)
 	}
 }

@@ -7,7 +7,7 @@ import (
 	"github.com/jarcoal/httpmock"
 )
 
-func TestAPIClientPersonal(t *testing.T) {
+func TestPersonal(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -28,7 +28,7 @@ func TestAPIClientPersonal(t *testing.T) {
 	}
 }
 
-func TestAPIClientPersonal_BadStatus(t *testing.T) {
+func TestPersonal_BadStatus(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -44,7 +44,7 @@ func TestAPIClientPersonal_BadStatus(t *testing.T) {
 	}
 }
 
-func TestAPIClientPersonal_EmptyBody(t *testing.T) {
+func TestPersonal_EmptyBody(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -60,7 +60,7 @@ func TestAPIClientPersonal_EmptyBody(t *testing.T) {
 	}
 }
 
-func TestAPIClientPersonal_InvalidJSON(t *testing.T) {
+func TestPersonal_InvalidJSON(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -76,7 +76,7 @@ func TestAPIClientPersonal_InvalidJSON(t *testing.T) {
 	}
 }
 
-func TestAPIClientStatistics(t *testing.T) {
+func TestStatistics(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -97,7 +97,7 @@ func TestAPIClientStatistics(t *testing.T) {
 	}
 }
 
-func TestAPIClientStatistics_BadStatus(t *testing.T) {
+func TestStatistics_BadStatus(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -113,7 +113,7 @@ func TestAPIClientStatistics_BadStatus(t *testing.T) {
 	}
 }
 
-func TestAPIClientStatistics_EmptyBody(t *testing.T) {
+func TestStatistics_EmptyBody(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -129,7 +129,7 @@ func TestAPIClientStatistics_EmptyBody(t *testing.T) {
 	}
 }
 
-func TestAPIClientStatistics_InvalidJSON(t *testing.T) {
+func TestStatistics_InvalidJSON(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
