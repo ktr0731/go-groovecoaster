@@ -25,6 +25,7 @@ type Detail struct {
 	ID         string `json:"music_id"`
 	Title      string `json:"music_title"`
 	Artist     string
+	ImageURL   string
 	HasEx      bool
 	IsFavorite bool
 	Skin       string `json:"skin_name"`
@@ -78,6 +79,8 @@ func (c *APIClient) Music(id int) (*MusicDetail, error) {
 	} else {
 		md.HasEx = false
 	}
+
+	md.ImageURL = "https://mypage.groovecoaster.jp/sp/music/music_image.php?music_id=" + md.ID
 
 	return md, nil
 }
