@@ -1,7 +1,6 @@
 package groovecoaster
 
 import (
-	"fmt"
 	"io/ioutil"
 	"testing"
 
@@ -27,5 +26,4 @@ func TestAPIClientMusicRankingPageCount(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	fmt.Println(v)
 }

@@ -52,7 +52,7 @@ func (c *APIClient) MusicRankingPageCount(id int, diff Difficulty) (int, error) 
 		return -1, fmt.Errorf("Invalid page count")
 	}
 
-	return count / 10, nil
+	return count / 100, nil
 }
 
 // MusicRanking fetches a music score ranking by music id and difficulty
