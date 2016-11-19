@@ -2,20 +2,20 @@ package groovecoaster
 
 import "fmt"
 
-// Musics is the structure that represents a row of music list
-type Musics struct {
+// MusicSummary is the structure that represents a row of music list
+type MusicSummary struct {
 	MusicID      int    `json:"music_id"`
 	MusicTitle   string `json:"music_title"`
 	PlayCount    int    `json:"play_count"`
 	LastPlayTime string `json:"last_play_time"`
 }
 
-type musicList struct {
-	MusicList []*Musics `json:"music_list"`
+type musicSummary struct {
+	MusicSummary []*MusicSummary `json:"music_list"`
 }
 
-// MusicList fetches all musics name by array
-func (p *APIClient) MusicList() ([]*Musics, error) {
+// MusicSummary fetches all musics name by array
+func (p *APIClient) MusicSummary() ([]*MusicSummary, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/music_list.php"
 
 	data, err := p.get(uri)
@@ -23,12 +23,12 @@ func (p *APIClient) MusicList() ([]*Musics, error) {
 		return nil, err
 	}
 
-	var ml musicList
+	var ml musicSummary
 	p.unmarshal(data, &ml)
 
-	if len(ml.MusicList) == 0 {
+	if len(ml.MusicSummary) == 0 {
 		return nil, fmt.Errorf("Music not found")
 	}
 
-	return ml.MusicList, nil
+	return ml.MusicSummary, nil
 }

@@ -22,7 +22,7 @@ func TestAPIMusicList(t *testing.T) {
 		httpmock.NewBytesResponder(200, data),
 	)
 
-	_, err = testClient.MusicList()
+	_, err = testClient.MusicSummary()
 	if err != nil {
 		t.Error(err)
 	}
