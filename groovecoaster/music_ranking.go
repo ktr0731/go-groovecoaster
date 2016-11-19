@@ -70,7 +70,6 @@ func (c *APIClient) MusicRanking(id int, diff Difficulty, page int) ([]*RankingE
 	if rd.Ranking == nil {
 		return nil, fmt.Errorf("Invalid JSON structure")
 	}
-	fmt.Println(rd.Ranking[0])
 
 	return rd.Ranking, nil
 }
