@@ -1,6 +1,7 @@
 package groovecoaster
 
 import (
+	"fmt"
 	"io/ioutil"
 	"testing"
 
@@ -43,8 +44,9 @@ func TestAPIClientMusicRanking(t *testing.T) {
 		httpmock.NewBytesResponder(200, data),
 	)
 
-	_, err = testClient.MusicRanking(290, Simple, 0)
+	v, err := testClient.MusicRanking(290, Simple, 0)
 	if err != nil {
 		t.Error(err)
 	}
+	fmt.Println(v[0].Name)
 }

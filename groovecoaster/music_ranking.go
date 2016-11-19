@@ -18,9 +18,9 @@ const (
 
 // RankingElement is the structure that represents a ranking detail of a player
 type RankingElement struct {
-	Score            int    `json:"event_point"`
+	Score            string `json:"event_point"`
 	Name             string `json:"player_name"`
-	LastPlayedArcade string `json:"last_played_tenpo_name"`
+	LastPlayedArcade string `json:"last_play_tenpo_name"`
 	Prefecture       string `json:"pref"`
 	Rank             int
 	Title            string
@@ -70,6 +70,7 @@ func (c *APIClient) MusicRanking(id int, diff Difficulty, page int) ([]*RankingE
 	if rd.Ranking == nil {
 		return nil, fmt.Errorf("Invalid JSON structure")
 	}
+	fmt.Println(rd.Ranking[0])
 
 	return rd.Ranking, nil
 }
