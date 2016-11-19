@@ -1,9 +1,6 @@
 package groovecoaster
 
-import (
-	"fmt"
-	"strconv"
-)
+import "fmt"
 
 // Result is the structure that represents music result each difficulty
 type Result struct {
@@ -52,9 +49,9 @@ type MusicDetail struct {
 
 // Music fetches a music detail by music id
 func (c *APIClient) Music(id int) (*MusicDetail, error) {
-	const uri = "mypage.groovecoaster.jp/sp/json/music_detail.php?music_id="
+	const uri = "mypage.groovecoaster.jp/sp/json/music_detail.php?music_id=%d"
 
-	data, err := c.get(uri + strconv.Itoa(id))
+	data, err := c.get(fmt.Sprintf(uri, id))
 	if err != nil {
 		return nil, err
 	}
