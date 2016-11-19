@@ -2,8 +2,8 @@ package groovecoaster
 
 import "fmt"
 
-// MusicSummary is the structure that represents a row of music list
-type MusicSummary struct {
+// Musics is the structure that represents a row of music list
+type Musics struct {
 	MusicID      int    `json:"music_id"`
 	MusicTitle   string `json:"music_title"`
 	PlayCount    int    `json:"play_count"`
@@ -11,11 +11,11 @@ type MusicSummary struct {
 }
 
 type musicList struct {
-	MusicList []MusicSummary `json:"music_list"`
+	MusicList []*Musics `json:"music_list"`
 }
 
 // MusicList fetches all musics name by array
-func (p *APIClient) MusicList() ([]MusicSummary, error) {
+func (p *APIClient) MusicList() ([]*Musics, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/music_list.php"
 
 	data, err := p.get(uri)
