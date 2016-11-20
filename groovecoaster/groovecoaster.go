@@ -15,7 +15,7 @@ type APIClient struct {
 
 // New creates a groovecoaster client
 func New() *APIClient {
-	client, err := TryLogin()
+	client, err := tryLogin()
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err.Error())
 	}

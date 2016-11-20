@@ -11,9 +11,9 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// TryLogin will attempt login to mypage in GrooveCoaster
+// tryLogin will attempt login to mypage in GrooveCoaster
 // If login was successful, it will return http.Client
-func TryLogin() (*http.Client, error) {
+func tryLogin() (*http.Client, error) {
 	const loginURL = "https://mypage.groovecoaster.jp/sp/login/auth_con.php"
 
 	const nesicaCardID = "NESICA_CARD_ID"
@@ -47,6 +47,7 @@ func TryLogin() (*http.Client, error) {
 		return nil, err
 	}
 
+	fmt.Println(res.Request.URL.String())
 	if url := res.Request.URL.String(); strings.Contains(url, "isError=true") {
 		return nil, fmt.Errorf("Invalid NESiCA Card ID or password")
 	} else if strings.Contains(url, "login_stop") {
