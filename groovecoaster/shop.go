@@ -27,12 +27,12 @@ func (i *intToBool) UnmarshalJSON(bytes []byte) error {
 
 // Sales is the structure that represents shop sales info
 type Sales struct {
-	Avatar  bool `json:"avatar_sale"`
-	Item    bool `json:"item_sale"`
-	Message bool `json:"message_sale"`
-	Music   bool `json:"music_sale"`
-	Skin    bool `json:"skin_sale"`
-	Sound   bool `json:"sound_sale"`
+	Avatar  intToBool `json:"avatar_sale"`
+	Item    intToBool `json:"item_sale"`
+	Message intToBool `json:"message_sale"`
+	Music   intToBool `json:"music_sale"`
+	Skin    intToBool `json:"skin_sale"`
+	Sound   intToBool `json:"sound_sale"`
 }
 
 // Shop is the structure that contains sales info, whether is openning
@@ -54,7 +54,7 @@ func (c *APIClient) Shop() (*Shop, error) {
 	var s *Shop
 	c.unmarshal(data, &s)
 
-	if s == nil {
+	if s.Sales == nil {
 		return nil, fmt.Errorf("Invalid JSON structure")
 	}
 
