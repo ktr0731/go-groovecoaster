@@ -23,7 +23,7 @@ type Detail struct {
 	Title      string `json:"music_title"`
 	Artist     string
 	ImageURL   string
-	HasEx      bool
+	HasEx      IntToBool `json:"ex_flag"`
 	IsFavorite bool
 	Skin       string `json:"skin_name"`
 	Message    string
@@ -70,11 +70,8 @@ func (c *APIClient) Music(id int) (*MusicDetail, error) {
 	md.Normal.Rank = tmp.MusicDetail.Rank[1].Rank
 	md.Hard.Rank = tmp.MusicDetail.Rank[2].Rank
 
-	if tmp.MusicDetail.ExFlag > 0 {
-		md.HasEx = true
+	if md.HasEx {
 		md.Extra.Rank = tmp.MusicDetail.Rank[3].Rank
-	} else {
-		md.HasEx = false
 	}
 
 	md.ImageURL = "https://mypage.groovecoaster.jp/sp/music/music_image.php?music_id=" + md.ID
