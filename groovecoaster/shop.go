@@ -1,38 +1,15 @@
 package groovecoaster
 
-import (
-	"fmt"
-	"strconv"
-)
-
-type intToBool bool
-
-func (i *intToBool) UnmarshalJSON(bytes []byte) error {
-	n, err := strconv.Atoi(string(bytes))
-	if err != nil {
-		return err
-	}
-
-	switch n {
-	case 1:
-		*i = true
-	case 0:
-		*i = false
-	default:
-		return fmt.Errorf("Invalid value in intToBool")
-	}
-
-	return nil
-}
+import "fmt"
 
 // Sales is the structure that represents shop sales info
 type Sales struct {
-	Avatar  intToBool `json:"avatar_sale"`
-	Item    intToBool `json:"item_sale"`
-	Message intToBool `json:"message_sale"`
-	Music   intToBool `json:"music_sale"`
-	Skin    intToBool `json:"skin_sale"`
-	Sound   intToBool `json:"sound_sale"`
+	Avatar  IntToBool `json:"avatar_sale"`
+	Item    IntToBool `json:"item_sale"`
+	Message IntToBool `json:"message_sale"`
+	Music   IntToBool `json:"music_sale"`
+	Skin    IntToBool `json:"skin_sale"`
+	Sound   IntToBool `json:"sound_sale"`
 }
 
 // Shop is the structure that contains sales info, whether is openning
