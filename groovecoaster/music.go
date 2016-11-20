@@ -35,8 +35,7 @@ type Detail struct {
 
 type tmp struct {
 	MusicDetail struct {
-		ExFlag int `json:"ex_flag"`
-		Rank   []struct {
+		Rank []struct {
 			Rank int
 		} `json:"user_rank"`
 	} `json:"music_detail"`
@@ -65,10 +64,17 @@ func (c *APIClient) Music(id int) (*MusicDetail, error) {
 		return nil, fmt.Errorf("Invalid JSON structure")
 	}
 
-	// TODO: Nilの場合がある
-	md.Simple.Rank = tmp.MusicDetail.Rank[0].Rank
-	md.Normal.Rank = tmp.MusicDetail.Rank[1].Rank
-	md.Hard.Rank = tmp.MusicDetail.Rank[2].Rank
+	if md.Simple != nil {
+		md.Simple.Rank = tmp.MusicDetail.Rank[0].Rank
+	}
+
+	if md.Normal != nil {
+		md.Normal.Rank = tmp.MusicDetail.Rank[1].Rank
+	}
+
+	if md.Hard != nil {
+		md.Hard.Rank = tmp.MusicDetail.Rank[2].Rank
+	}
 
 	if md.HasEx {
 		md.Extra.Rank = tmp.MusicDetail.Rank[3].Rank
