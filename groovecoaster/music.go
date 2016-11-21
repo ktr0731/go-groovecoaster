@@ -76,7 +76,7 @@ func (c *APIClient) Music(id int) (*MusicDetail, error) {
 		md.Hard.Rank = tmp.MusicDetail.Rank[2].Rank
 	}
 
-	if md.HasEx {
+	if md.HasEx && md.Extra != nil {
 		md.Extra.Rank = tmp.MusicDetail.Rank[3].Rank
 	}
 

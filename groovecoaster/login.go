@@ -47,7 +47,6 @@ func tryLogin() (*http.Client, error) {
 		return nil, err
 	}
 
-	fmt.Println(res.Request.URL.String())
 	if url := res.Request.URL.String(); strings.Contains(url, "isError=true") {
 		return nil, fmt.Errorf("Invalid NESiCA Card ID or password")
 	} else if strings.Contains(url, "login_stop") {
