@@ -1,0 +1,29 @@
+package groovecoaster
+
+import (
+	"io/ioutil"
+	"testing"
+
+	"github.com/jarcoal/httpmock"
+)
+
+func TestShopAvatars(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	data, err := ioutil.ReadFile("../tests/assets/shop_avatar_list.json")
+	if err != nil {
+		t.Error(err)
+	}
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/shop_avatar_list.php",
+		httpmock.NewBytesResponder(200, data),
+	)
+
+	_, err = testClient.ShopAvatars()
+	if err != nil {
+		t.Error(err)
+	}
+}

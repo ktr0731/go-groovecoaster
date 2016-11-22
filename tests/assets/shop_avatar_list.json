@@ -1,0 +1,169 @@
+{
+  "status": 0,
+  "current_coin": 25372,
+  "discount": 0,
+  "product_list": [
+    {
+      "id": 8,
+      "name": "HUMAN",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "57"
+    },
+    {
+      "id": 9,
+      "name": "RAPID",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "58"
+    },
+    {
+      "id": 11,
+      "name": "SPARK",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "60"
+    },
+    {
+      "id": 12,
+      "name": "GENE",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "61"
+    },
+    {
+      "id": 13,
+      "name": "UFO",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "62"
+    },
+    {
+      "id": 19,
+      "name": "GC CRAB",
+      "gc": "10000",
+      "new": "0",
+      "product_id": "64"
+    },
+    {
+      "id": 63,
+      "name": "SPICA",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "65"
+    },
+    {
+      "id": 65,
+      "name": "SPACE INVADERS",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "66"
+    },
+    {
+      "id": 67,
+      "name": "GC SQUID",
+      "gc": "5000",
+      "new": "0",
+      "product_id": "67"
+    },
+    {
+      "id": 80,
+      "name": "NICO",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "69"
+    },
+    {
+      "id": 91,
+      "name": "March & Arch",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "70"
+    },
+    {
+      "id": 92,
+      "name": "CANDICE BONBON",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "71"
+    },
+    {
+      "id": 93,
+      "name": "RONMEI",
+      "gc": "3000",
+      "new": "0",
+      "product_id": "72"
+    },
+    {
+      "id": 23,
+      "name": "KIKKUN",
+      "gc": "3000",
+      "new": "1",
+      "product_id": "83"
+    },
+    {
+      "id": 32,
+      "name": "RAIN",
+      "gc": "3000",
+      "new": "1",
+      "product_id": "86"
+    },
+    {
+      "id": 34,
+      "name": "KING METAL DRAGON",
+      "gc": "3000",
+      "new": "1",
+      "product_id": "87"
+    },
+    {
+      "id": 35,
+      "name": "TAMADRA",
+      "gc": "3000",
+      "new": "1",
+      "product_id": "88"
+    },
+    {
+      "id": 42,
+      "name": "KNITTY",
+      "gc": "3000",
+      "new": "1",
+      "product_id": "89"
+    },
+    {
+      "id": 54,
+      "name": "FB777(RPG)",
+      "gc": "3000",
+      "new": "1",
+      "product_id": "90"
+    },
+    {
+      "id": 55,
+      "name": "KIKKUN(RPG)",
+      "gc": "3000",
+      "new": "1",
+      "product_id": "91"
+    },
+    {
+      "id": 56,
+      "name": "aromahot(RPG)",
+      "gc": "3000",
+      "new": "1",
+      "product_id": "92"
+    },
+    {
+      "id": 57,
+      "name": "eoheoh(RPG)",
+      "gc": "3000",
+      "new": "1",
+      "product_id": "93"
+    },
+    {
+      "id": 62,
+      "name": "HITO",
+      "gc": "5000",
+      "new": "1",
+      "product_id": "94"
+    }
+  ],
+  "api_error": null
+}
