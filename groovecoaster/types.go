@@ -33,9 +33,9 @@ type StringToBool bool
 // UnmarshalJSON unmarshals string to bool
 func (s *StringToBool) UnmarshalJSON(bytes []byte) error {
 	switch string(bytes) {
-	case "1":
+	case `"1"`:
 		*s = true
-	case "0":
+	case `"0"`:
 		*s = false
 	default:
 		return fmt.Errorf("Invalid value in StringToBool")
