@@ -1,0 +1,78 @@
+{
+  "status": 0,
+  "current_coin": 25372,
+  "discount": 0,
+  "product_list": [
+    {
+      "id": 6,
+      "name": "INFINITY GENE",
+      "gc": "2000",
+      "new": "0",
+      "product_id": "42"
+    },
+    {
+      "id": 7,
+      "name": "MOLECULES",
+      "gc": "2000",
+      "new": "0",
+      "product_id": "43"
+    },
+    {
+      "id": 8,
+      "name": "BUTTERFLY",
+      "gc": "2000",
+      "new": "0",
+      "product_id": "44"
+    },
+    {
+      "id": 9,
+      "name": "PAISLEY",
+      "gc": "2000",
+      "new": "0",
+      "product_id": "45"
+    },
+    {
+      "id": 10,
+      "name": "8BIT",
+      "gc": "2000",
+      "new": "0",
+      "product_id": "46"
+    },
+    {
+      "id": 11,
+      "name": "BRIGHTNESS",
+      "gc": "2000",
+      "new": "0",
+      "product_id": "47"
+    },
+    {
+      "id": 13,
+      "name": "HEAVEN",
+      "gc": "2000",
+      "new": "0",
+      "product_id": "49"
+    },
+    {
+      "id": 14,
+      "name": "SNOW",
+      "gc": "2000",
+      "new": "0",
+      "product_id": "50"
+    },
+    {
+      "id": 15,
+      "name": "FEATHER",
+      "gc": "2000",
+      "new": "0",
+      "product_id": "51"
+    },
+    {
+      "id": 16,
+      "name": "NOTE",
+      "gc": "2000",
+      "new": "0",
+      "product_id": "52"
+    }
+  ],
+  "api_error": null
+}
