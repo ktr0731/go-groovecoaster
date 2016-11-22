@@ -1,0 +1,161 @@
+{
+  "status": 0,
+  "current_coin": 25372,
+  "discount": 0,
+  "item_list": [
+    {
+      "id": 1,
+      "name": "SAFE",
+      "possess": "20",
+      "comment": "10回までMISSをGOODに変えます。@@Converts a MISS to a GOOD up to 10 times.",
+      "gc": "500",
+      "new": "0",
+      "product_id": 1
+    },
+    {
+      "id": 2,
+      "name": "EASY TARGET",
+      "possess": "29",
+      "comment": "ターゲットがHIT、HOLD、CRITICALのいずれかに変更されます。@@Converts targets to a HIT, HOLD, or CRITICAL.",
+      "gc": "300",
+      "new": "0",
+      "product_id": 2
+    },
+    {
+      "id": 3,
+      "name": "MUSIC PLAYER",
+      "possess": "33",
+      "comment": "演奏の結果に関わらず正しい曲を再生します。@@Plays song correctly regardless of performance.",
+      "gc": "500",
+      "new": "0",
+      "product_id": 3
+    },
+    {
+      "id": 4,
+      "name": "MIRROR",
+      "possess": "22",
+      "comment": "ステージが左右反転します。@@Flips stage horizontally.",
+      "gc": "500",
+      "new": "0",
+      "product_id": 4
+    },
+    {
+      "id": 5,
+      "name": "NO WAY",
+      "possess": "31",
+      "comment": "コースのラインが見えなくなります。@@Hides course lines.",
+      "gc": "300",
+      "new": "0",
+      "product_id": 5
+    },
+    {
+      "id": 6,
+      "name": "REVERSE",
+      "possess": "32",
+      "comment": "ステージが上下左右反転します。@@Flips stage horizontally and vertically.",
+      "gc": "500",
+      "new": "0",
+      "product_id": 6
+    },
+    {
+      "id": 7,
+      "name": "HIDDEN",
+      "possess": "41",
+      "comment": "ターゲットがアバターと接触する直前に見えなくなります。@@Targets vanish just before touching your avatar.",
+      "gc": "300",
+      "new": "0",
+      "product_id": 7
+    },
+    {
+      "id": 8,
+      "name": "SUDDEN",
+      "possess": "21",
+      "comment": "ターゲットがアバターと接触する直前に出現します。@@Targets appear just before touching your avatar.",
+      "gc": "300",
+      "new": "0",
+      "product_id": 8
+    },
+    {
+      "id": 9,
+      "name": "JUST",
+      "possess": "24",
+      "comment": "GREAT以外のタイミングはすべてMISSになります。@@All but GREAT timing becomes a MISS.",
+      "gc": "1000",
+      "new": "0",
+      "product_id": 9
+    },
+    {
+      "id": 10,
+      "name": "STEALTH",
+      "possess": "1",
+      "comment": "全てのターゲットが見えなくなります。@@Hides all targets.",
+      "gc": "1000",
+      "new": "0",
+      "product_id": 10
+    },
+    {
+      "id": 12,
+      "name": "NOTHING",
+      "possess": 0,
+      "comment": "コースのラインとターゲットが見えなくなります。@@Course lines and targets vanish.",
+      "gc": "3000",
+      "new": "0",
+      "product_id": 11
+    },
+    {
+      "id": 13,
+      "name": "IMPOSSIBLE",
+      "possess": 0,
+      "comment": "ターゲットが見えなくなり、GREAT以外のタイミングがMISSになります。@@Targets vanish and all but GREAT timing becomes a MISS.",
+      "gc": "3000",
+      "new": "0",
+      "product_id": 12
+    },
+    {
+      "id": 16,
+      "name": "ALONE",
+      "possess": "15",
+      "comment": "対戦時に周囲のプレイヤーを非表示にします。@@Hide the other players and your ranking beneath the avator in multiplayer match",
+      "gc": "300",
+      "new": "0",
+      "product_id": 13
+    },
+    {
+      "id": 17,
+      "name": "ONE HAND",
+      "possess": "3",
+      "comment": "ターゲットがHIT、HOLD、SLIDE、BEAT、SCRATCH、SLIDE HOLDのいずれかに変更されます。@@Converts targets to a HIT, HOLD, SLIDE, BEAT, SCRATCH, or SLIDE HOLD.",
+      "gc": "500",
+      "new": "0",
+      "product_id": 14
+    },
+    {
+      "id": 18,
+      "name": "PERFECT PLAYER",
+      "possess": 0,
+      "comment": "演奏結果に関わらず、アドリブ音を含む正しい曲を再生します。@@Replay the complete song including ad-libs regardless of results.",
+      "gc": "5000",
+      "new": "0",
+      "product_id": 15
+    },
+    {
+      "id": 19,
+      "name": "NO INFO",
+      "possess": "7",
+      "comment": "ゲージ、判定、スコアなどの表示物を非表示にします。対戦時には周囲のプレイヤーや順位も非表示になります。@@Displays including GAUGE, RATING and SCORE become invisible.",
+      "gc": "500",
+      "new": "0",
+      "product_id": 31
+    },
+    {
+      "id": 20,
+      "name": "BREAK",
+      "possess": "64",
+      "comment": "10回MISSすると強制的に演奏終了となりますが、クリアできれば獲得できるGCが増加します。(店内対戦プレイでは選択できません。)@@The song is terminated with 10 MISSES.",
+      "gc": "300",
+      "new": "0",
+      "product_id": 32
+    }
+  ],
+  "api_error": null
+}
