@@ -43,18 +43,3 @@ func (s *StringToBool) UnmarshalJSON(bytes []byte) error {
 
 	return nil
 }
-
-// StringToInt type is a type that regards string as int for JSON
-type StringToInt int
-
-// UnmarshalJSON unmarshals string to bool
-func (s *StringToInt) UnmarshalJSON(bytes []byte) error {
-	n, err := strconv.Atoi(string(bytes))
-	if err != nil {
-		return fmt.Errorf("Invalid value in StringToBool")
-	}
-
-	*s = StringToInt(n)
-
-	return nil
-}

@@ -5,20 +5,19 @@ import "fmt"
 // ShopMusics is the structure that represents shop sales info about musics
 type ShopMusics struct {
 	Artist    string
-	GC        StringToInt
-	ID        string
+	GC        int `json:",string"`
+	ID        int
 	Name      string
 	New       StringToBool
 	ProductID string `json:"product_id"`
 }
 
 type shopMusics struct {
-	ShopMusics []*ShopMusics `json:"product_list"`
-	Status     int
+	ShopMusics []ShopMusics `json:"product_list"`
 }
 
 // ShopMusics fetches all musics in shop
-func (p *APIClient) ShopMusics() ([]*ShopMusics, error) {
+func (p *APIClient) ShopMusics() ([]ShopMusics, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_music_list.php"
 
 	data, err := p.get(uri)
@@ -28,7 +27,7 @@ func (p *APIClient) ShopMusics() ([]*ShopMusics, error) {
 
 	var sm shopMusics
 	p.unmarshal(data, &sm)
+	fmt.Println(sm.ShopMusics)
 
-	fmt.Printf("%#v\n", sm.ShopMusics[0])
 	return sm.ShopMusics, nil
 }
