@@ -43,3 +43,24 @@ func (s *StringToBool) UnmarshalJSON(bytes []byte) error {
 
 	return nil
 }
+
+// StringToDifficulty type is a type that regards string as difficulty in GrooveCoaster for JSON
+type StringToDifficulty string
+
+// UnmarshalJSON unmarshals string to difficulty in GrooveCoaster
+func (s *StringToDifficulty) UnmarshalJSON(bytes []byte) error {
+	switch string(bytes) {
+	case `"1"`:
+		*s = "SIMPLE"
+	case `"2"`:
+		*s = "NORMAL"
+	case `"3"`:
+		*s = "HARD"
+	case `"4"`:
+		*s = "EXTRA"
+	default:
+		return fmt.Errorf("Invalid value in StringToDifficulty")
+	}
+
+	return nil
+}
