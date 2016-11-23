@@ -1,0 +1,86 @@
+{
+  "status": 0,
+  "current_coin": 25372,
+  "discount": 0,
+  "category_name": "アイテム",
+  "product_list": [
+    {
+      "id": 54,
+      "name": "SAFEを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "148"
+    },
+    {
+      "id": 57,
+      "name": "MIRRORを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "149"
+    },
+    {
+      "id": 58,
+      "name": "NO WAYを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "150"
+    },
+    {
+      "id": 59,
+      "name": "REVERSEを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "151"
+    },
+    {
+      "id": 60,
+      "name": "HIDDENを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "152"
+    },
+    {
+      "id": 61,
+      "name": "SUDDENを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "153"
+    },
+    {
+      "id": 62,
+      "name": "JUSTを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "154"
+    },
+    {
+      "id": 63,
+      "name": "STEALTHを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "155"
+    },
+    {
+      "id": 64,
+      "name": "SUPER SAFEを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "156"
+    },
+    {
+      "id": 65,
+      "name": "NOTHINGを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "157"
+    },
+    {
+      "id": 66,
+      "name": "IMPOSSIBLEを使います！",
+      "gc": "1000",
+      "new": "0",
+      "product_id": "158"
+    }
+  ],
+  "api_error": null
+}
