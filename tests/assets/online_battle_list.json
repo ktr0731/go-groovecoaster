@@ -1,0 +1,461 @@
+{
+  "status": 0,
+  "onlineBattleList": [
+    {
+      "eid": "34",
+      "mid": "6448",
+      "date": "2016/03/19 16:07",
+      "fav": "0",
+      "rank": 2,
+      "star": "51",
+      "detail": [
+        {
+          "player_name": "CHR9",
+          "pref": "愛知県"
+        },
+        {
+          "player_name": "Givalie",
+          "pref": "静岡県"
+        },
+        {
+          "player_name": "KRAGE<?>",
+          "pref": "愛知県"
+        }
+      ]
+    },
+    {
+      "eid": "34",
+      "mid": "6578",
+      "date": "2016/03/19 16:30",
+      "fav": "1",
+      "rank": 2,
+      "star": "54",
+      "detail": [
+        {
+          "player_name": "YU-@ZU",
+          "pref": "東京都"
+        },
+        {
+          "player_name": "KANATA",
+          "pref": "東京都"
+        },
+        {
+          "player_name": "Klruha",
+          "pref": "茨城県"
+        }
+      ]
+    },
+    {
+      "eid": "34",
+      "mid": "14325",
+      "date": "2016/03/22 15:40",
+      "fav": "0",
+      "rank": 1,
+      "star": "61",
+      "detail": [
+        {
+          "player_name": "Celcle",
+          "pref": "北海道"
+        },
+        {
+          "player_name": "SB@chan",
+          "pref": "神奈川県"
+        },
+        {
+          "player_name": "Momiji",
+          "pref": "埼玉県"
+        }
+      ]
+    },
+    {
+      "eid": "34",
+      "mid": "14368",
+      "date": "2016/03/22 15:53",
+      "fav": "0",
+      "rank": 1,
+      "star": "63",
+      "detail": [
+        {
+          "player_name": "CheongKi",
+          "pref": "香港"
+        },
+        {
+          "player_name": "Momiji",
+          "pref": "埼玉県"
+        },
+        {
+          "player_name": "TAMIY>>",
+          "pref": "千葉県"
+        }
+      ]
+    },
+    {
+      "eid": "34",
+      "mid": "31637",
+      "date": "2016/03/31 17:09",
+      "fav": "0",
+      "rank": 1,
+      "star": "69",
+      "detail": [
+        {
+          "player_name": "syusyun",
+          "pref": "北海道"
+        },
+        {
+          "player_name": "EIRIN",
+          "pref": "香港"
+        }
+      ]
+    },
+    {
+      "eid": "34",
+      "mid": "33241",
+      "date": "2016/04/01 16:51",
+      "fav": "0",
+      "rank": 3,
+      "star": "38",
+      "detail": [
+        {
+          "player_name": "SnowWeln",
+          "pref": "神奈川県"
+        },
+        {
+          "player_name": "MARU",
+          "pref": "埼玉県"
+        },
+        {
+          "player_name": "Xion14",
+          "pref": "千葉県"
+        }
+      ]
+    },
+    {
+      "eid": "35",
+      "mid": "6146",
+      "date": "2016/04/18 18:32",
+      "fav": "0",
+      "rank": 4,
+      "star": "42",
+      "detail": [
+        {
+          "player_name": "SHIRAKEN",
+          "pref": "長野県"
+        },
+        {
+          "player_name": "M.S",
+          "pref": "埼玉県"
+        },
+        {
+          "player_name": "NANARI",
+          "pref": "愛知県"
+        }
+      ]
+    },
+    {
+      "eid": "35",
+      "mid": "14758",
+      "date": "2016/04/26 18:19",
+      "fav": "0",
+      "rank": 4,
+      "star": "39",
+      "detail": [
+        {
+          "player_name": "OZU",
+          "pref": "福井県"
+        },
+        {
+          "player_name": "Galax",
+          "pref": "神奈川県"
+        },
+        {
+          "player_name": "+HAKASE+",
+          "pref": "北海道"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "5215",
+      "date": "2016/05/04 15:26",
+      "fav": "0",
+      "rank": 1,
+      "star": "65",
+      "detail": [
+        {
+          "player_name": "Ryota",
+          "pref": "静岡県"
+        },
+        {
+          "player_name": "nekopa",
+          "pref": "大分県"
+        },
+        {
+          "player_name": "JIGGY714",
+          "pref": "アメリカ"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "5293",
+      "date": "2016/05/04 15:39",
+      "fav": "0",
+      "rank": 2,
+      "star": "62",
+      "detail": [
+        {
+          "player_name": "mrskon-G",
+          "pref": "愛知県"
+        },
+        {
+          "player_name": "shinya",
+          "pref": "茨城県"
+        },
+        {
+          "player_name": "hitode",
+          "pref": "東京都"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "5615",
+      "date": "2016/05/04 16:30",
+      "fav": "0",
+      "rank": 2,
+      "star": "57",
+      "detail": [
+        {
+          "player_name": "klRI",
+          "pref": "栃木県"
+        },
+        {
+          "player_name": "OKYM",
+          "pref": "千葉県"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "10472",
+      "date": "2016/05/06 15:34",
+      "fav": "0",
+      "rank": 4,
+      "star": "34",
+      "detail": [
+        {
+          "player_name": "Jindai",
+          "pref": "東京都"
+        },
+        {
+          "player_name": "EN453",
+          "pref": "富山県"
+        },
+        {
+          "player_name": "SATORI",
+          "pref": "和歌山県"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "43246",
+      "date": "2016/05/25 22:44",
+      "fav": "0",
+      "rank": 3,
+      "star": "42",
+      "detail": [
+        {
+          "player_name": "SERAPHIM",
+          "pref": "東京都"
+        },
+        {
+          "player_name": "Byakuren",
+          "pref": "東京都"
+        },
+        {
+          "player_name": "LEO",
+          "pref": "岐阜県"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "43258",
+      "date": "2016/05/25 22:56",
+      "fav": "0",
+      "rank": 4,
+      "star": "38",
+      "detail": [
+        {
+          "player_name": "OZU",
+          "pref": "福井県"
+        },
+        {
+          "player_name": "tzw1.0.4",
+          "pref": "神奈川県"
+        },
+        {
+          "player_name": "JUN_2",
+          "pref": "東京都"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "43270",
+      "date": "2016/05/25 23:09",
+      "fav": "0",
+      "rank": 2,
+      "star": "53",
+      "detail": [
+        {
+          "player_name": "OZU",
+          "pref": "福井県"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "46811",
+      "date": "2016/05/28 14:46",
+      "fav": "0",
+      "rank": 4,
+      "star": "43",
+      "detail": [
+        {
+          "player_name": "S.Osiris",
+          "pref": "東京都"
+        },
+        {
+          "player_name": "Cloud",
+          "pref": "東京都"
+        },
+        {
+          "player_name": "Maeken",
+          "pref": "鹿児島県"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "46866",
+      "date": "2016/05/28 15:01",
+      "fav": "0",
+      "rank": 3,
+      "star": "46",
+      "detail": [
+        {
+          "player_name": "sleeper",
+          "pref": "千葉県"
+        },
+        {
+          "player_name": "OTAKUDON",
+          "pref": "山形県"
+        },
+        {
+          "player_name": "FukaFuka",
+          "pref": "千葉県"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "46922",
+      "date": "2016/05/28 15:12",
+      "fav": "0",
+      "rank": 2,
+      "star": "54",
+      "detail": [
+        {
+          "player_name": "SORA",
+          "pref": "大阪府"
+        },
+        {
+          "player_name": "IZAYOI2",
+          "pref": "千葉県"
+        },
+        {
+          "player_name": "Rei",
+          "pref": "香川県"
+        }
+      ]
+    },
+    {
+      "eid": "36",
+      "mid": "46985",
+      "date": "2016/05/28 15:25",
+      "fav": "0",
+      "rank": 3,
+      "star": "43",
+      "detail": [
+        {
+          "player_name": "EXCELiCE",
+          "pref": "インドネシア"
+        },
+        {
+          "player_name": "Kijit-GC",
+          "pref": "愛知県"
+        },
+        {
+          "player_name": "MATOMA",
+          "pref": "神奈川県"
+        }
+      ]
+    },
+    {
+      "eid": "38",
+      "mid": "215",
+      "date": "2016/06/22 12:54",
+      "fav": "0",
+      "rank": 3,
+      "star": "51",
+      "detail": [
+        {
+          "player_name": "R.EIMU",
+          "pref": "愛知県"
+        },
+        {
+          "player_name": "Cukr",
+          "pref": "三重県"
+        },
+        {
+          "player_name": "KION",
+          "pref": "大阪府"
+        }
+      ]
+    },
+    {
+      "eid": "40",
+      "mid": "9947",
+      "date": "2016/08/04 12:05",
+      "fav": "0",
+      "rank": 4,
+      "star": "43",
+      "detail": [
+        {
+          "player_name": "GUEST",
+          "pref": "群馬県"
+        },
+        {
+          "player_name": "KAW*E",
+          "pref": "徳島県"
+        },
+        {
+          "player_name": "ALTE-don",
+          "pref": "石川県"
+        }
+      ]
+    },
+    {
+      "eid": "46",
+      "mid": "5739",
+      "date": "2016/10/25 13:52",
+      "fav": "0",
+      "rank": 1,
+      "star": "30",
+      "detail": []
+    }
+  ],
+  "favCnt": 1
+}
