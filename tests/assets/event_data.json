@@ -1,14 +1,47 @@
 {
   "status": 0,
   "event_data": {
-    "title_name": "消滅都市 コラボイベント",
-    "open_date": "2016-11-07",
-    "close_date": "2016-11-23",
+    "title_name": "アニメ曲限定ミニイベント2",
+    "open_date": "2016-11-24",
+    "close_date": "2016-11-30",
     "comment_ja": "",
     "comment_en": "",
-    "score_type": 99,
-    "user_event_data": null
+    "score_type": "0",
+    "user_event_data": {
+      "rank": 2168,
+      "event_point": "165",
+      "award_data": {
+        "avatar_award": [
+          "REIMU",
+          "SYAMEIMARU"
+        ],
+        "title_award": [
+          "伝説の幻想ブン屋",
+          "小さなスイートポイズン",
+          "風神少女"
+        ],
+        "item_award": {
+          "1": {
+            "item_name": "SAFE",
+            "item_num": 5
+          },
+          "14": {
+            "item_name": "GC BOOSTER",
+            "item_num": 5
+          },
+          "20": {
+            "item_name": "BREAK",
+            "item_num": 5
+          }
+        },
+        "trophy_num": 3,
+        "music_award": null
+      },
+      "high_score": 7810468
+    },
+    "old_comment_ja": "",
+    "old_comment_en": ""
   },
-  "vicinity_ranking_data": null,
+  "vicinity_ranking_data": [],
   "is_japanese": true
 }

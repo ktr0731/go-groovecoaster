@@ -64,3 +64,27 @@ func (s *StringToDifficulty) UnmarshalJSON(bytes []byte) error {
 
 	return nil
 }
+
+// AvatarAward is the type that represents avatar award of each event
+type AvatarAward string
+
+// ItemAward is the type that represents item award of each event
+type ItemAward struct {
+	Name   string `json:"item_name"`
+	Number int    `json:"item_num"`
+}
+
+// MusicAward is the type that represents music award of each event
+type MusicAward string
+
+// TitleAward is the type that represents title award of each event
+type TitleAward string
+
+// Awards is the type that represents set of each awards
+type Awards struct {
+	Avatars []AvatarAward `json:"avatar_award"`
+	Items   []ItemAward   `json:"item_award"`
+	Musics  []MusicAward  `json:"music_award"`
+	Titles  []TitleAward  `json:"title_award"`
+	Trophy  int           `json:"trophy_num"`
+}
