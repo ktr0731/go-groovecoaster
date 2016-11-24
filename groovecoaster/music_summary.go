@@ -4,8 +4,8 @@ import "fmt"
 
 // MusicSummary is the structure that represents a row of music list
 type MusicSummary struct {
-	MusicID      int    `json:"music_id"`
-	MusicTitle   string `json:"music_title"`
+	ID           int    `json:"music_id"`
+	Title        string `json:"music_title"`
 	PlayCount    int    `json:"play_count"`
 	LastPlayTime string `json:"last_play_time"`
 }
@@ -26,8 +26,8 @@ func (p *APIClient) MusicSummary() ([]*MusicSummary, error) {
 	var ml musicSummary
 	p.unmarshal(data, &ml)
 
-	if len(ml.MusicSummary) == 0 {
-		return nil, fmt.Errorf("Music not found")
+	if ml.MusicSummary == nil {
+		return nil, fmt.Errorf("invalid JSON structure")
 	}
 
 	return ml.MusicSummary, nil

@@ -44,22 +44,6 @@ func TestEventSummary_BadStatus(t *testing.T) {
 	}
 }
 
-func TestEventSummary_EmptyBody(t *testing.T) {
-	httpmock.Activate()
-	defer httpmock.DeactivateAndReset()
-
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/event_data.php",
-		httpmock.NewStringResponder(200, ""),
-	)
-
-	_, err := testClient.EventSummary()
-	if err == nil {
-		t.Error(err)
-	}
-}
-
 func TestEventSummary_InvalidJSON(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()

@@ -48,9 +48,9 @@ func tryLogin() (*http.Client, error) {
 	}
 
 	if url := res.Request.URL.String(); strings.Contains(url, "isError=true") {
-		return nil, fmt.Errorf("Invalid NESiCA Card ID or password")
+		return nil, fmt.Errorf("invalid NESiCA Card ID or password")
 	} else if strings.Contains(url, "login_stop") {
-		return nil, fmt.Errorf("Login attempts limit exceed")
+		return nil, fmt.Errorf("login attempts limit exceed")
 	}
 
 	return &client, nil

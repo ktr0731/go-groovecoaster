@@ -1,0 +1,28 @@
+{
+  "status": 0,
+  "music_detail": {
+    "music_id": "509",
+    "music_title": "シュガーソングとビターステップ",
+    "artist": "UNISON SQUARE GARDEN",
+    "skin_name": "DEFAULT",
+    "ex_flag": 0,
+    "simple_result_data": null,
+    "normal_result_data": null,
+    "hard_result_data": null,
+    "extra_result_data": null,
+    "user_rank": [],
+    "difficulty": [
+      {
+        "music_difficulty": 0
+      },
+      {
+        "music_difficulty": 1
+      },
+      {
+        "music_difficulty": 2
+      }
+    ],
+    "fav_flg": 0,
+    "message": null
+  }
+}

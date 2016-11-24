@@ -6,7 +6,7 @@ import "fmt"
 type PlayerEventDetail struct {
 	Awards     *Awards `json:"award_data"`
 	EventPoint int     `json:"event_point,string"`
-	Score      int     `json:"high_score"`
+	HighScore  int     `json:"high_score"`
 	Rank       int
 }
 

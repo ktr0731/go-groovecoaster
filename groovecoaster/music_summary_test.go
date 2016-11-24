@@ -7,54 +7,54 @@ import (
 	"github.com/jarcoal/httpmock"
 )
 
-func TestEventArchive(t *testing.T) {
+func TestMusicList(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
-	data, err := ioutil.ReadFile("../tests/assets/event_data.json")
+	data, err := ioutil.ReadFile("../tests/assets/music_list.json")
 	if err != nil {
 		t.Error(err)
 	}
 
 	httpmock.RegisterResponder(
 		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/event_data.php?event_id=28&old_flag=true",
+		scheme+"mypage.groovecoaster.jp/sp/json/music_list.php",
 		httpmock.NewBytesResponder(200, data),
 	)
 
-	_, err = testClient.EventArchiveDetail(28)
+	_, err = testClient.MusicSummary()
 	if err != nil {
 		t.Error(err)
 	}
 }
 
-func TestEventArchive_BadStatus(t *testing.T) {
+func TestMusicList_BadStatus(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
 	httpmock.RegisterResponder(
 		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/event_data.php?event_id=28&old_flag=true",
+		scheme+"mypage.groovecoaster.jp/sp/json/music_list.php",
 		httpmock.NewStringResponder(500, ""),
 	)
 
-	_, err := testClient.EventArchiveDetail(28)
+	_, err := testClient.MusicSummary()
 	if err == nil {
 		t.Error(err)
 	}
 }
 
-func TestEventArchive_InvalidJSON(t *testing.T) {
+func TestMusicList_InvalidJSON(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
 	httpmock.RegisterResponder(
 		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/event_data.php?event_id=28&old_flag=true",
+		scheme+"mypage.groovecoaster.jp/sp/json/music_list.php",
 		httpmock.NewStringResponder(200, `{"test": "test"}`),
 	)
 
-	_, err := testClient.EventArchiveDetail(28)
+	_, err := testClient.MusicSummary()
 	if err == nil {
 		t.Error(err)
 	}

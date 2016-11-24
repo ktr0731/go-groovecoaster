@@ -34,7 +34,7 @@ func (c *APIClient) EventSummary() (*EventSummary, error) {
 	c.unmarshal(data, &es)
 
 	if es.EventSummary == nil {
-		return nil, fmt.Errorf("Invalid JSON structure")
+		return nil, fmt.Errorf("invalid JSON structure")
 	}
 
 	return es.EventSummary, nil

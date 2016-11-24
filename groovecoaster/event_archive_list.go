@@ -15,18 +15,18 @@ type eventArchiveList struct {
 }
 
 // EventArchiveList fetches all events that has been held until now
-func (p *APIClient) EventArchiveList() ([]*EventArchive, error) {
+func (c *APIClient) EventArchiveList() ([]*EventArchive, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/event_info_list.php"
 
-	data, err := p.get(uri)
+	data, err := c.get(uri)
 	if err != nil {
 		return nil, err
 	}
 
 	var ea eventArchiveList
-	p.unmarshal(data, &ea)
+	c.unmarshal(data, &ea)
 
-	if ea.EventArchiveList != nil {
+	if ea.EventArchiveList == nil {
 		return nil, fmt.Errorf("invalid JSON structure: EventArchiveList()")
 	}
 
