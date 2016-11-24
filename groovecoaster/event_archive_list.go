@@ -26,8 +26,8 @@ func (p *APIClient) EventArchiveList() ([]*EventArchive, error) {
 	var ea eventArchiveList
 	p.unmarshal(data, &ea)
 
-	if len(ea.EventArchiveList) == 0 {
-		return nil, fmt.Errorf("Event archive not found")
+	if ea.EventArchiveList != nil {
+		return nil, fmt.Errorf("invalid JSON structure: EventArchiveList()")
 	}
 
 	return ea.EventArchiveList, nil

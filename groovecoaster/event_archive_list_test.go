@@ -27,3 +27,35 @@ func TestEventArchiveList(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestEventArchiveList_BadStatus(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/event_info_list.php",
+		httpmock.NewStringResponder(500, ""),
+	)
+
+	_, err := testClient.EventArchiveList()
+	if err == nil {
+		t.Error(err)
+	}
+}
+
+func TestEventArchiveList_InvalidJSON(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/event_info_list.php",
+		httpmock.NewStringResponder(200, `{"test": "test"}`),
+	)
+
+	_, err := testClient.EventArchiveList()
+	if err == nil {
+		t.Error(err)
+	}
+}

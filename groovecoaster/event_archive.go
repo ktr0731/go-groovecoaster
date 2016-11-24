@@ -35,7 +35,7 @@ func (c *APIClient) EventArchiveDetail(eventID int) (*EventDetail, error) {
 	c.unmarshal(data, &ed)
 
 	if ed.EventDetail == nil {
-		return nil, fmt.Errorf("Invalid JSON structure")
+		return nil, fmt.Errorf("invalid JSON structure: EventArchive()")
 	}
 
 	return ed.EventDetail, nil

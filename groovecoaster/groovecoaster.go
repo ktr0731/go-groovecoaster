@@ -17,7 +17,7 @@ type APIClient struct {
 func New() *APIClient {
 	client, err := tryLogin()
 	if err != nil {
-		fmt.Fprintln(os.Stderr, err.Error())
+		fmt.Fprintln(os.Stderr, err)
 	}
 
 	return &APIClient{
@@ -33,7 +33,7 @@ func (c *APIClient) get(uri string) ([]byte, error) {
 	defer res.Body.Close()
 
 	if res.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("Fetch %s failed (Status: %d)", uri, res.StatusCode)
+		return nil, fmt.Errorf("fetch %s failed (Status: %s)", uri, res.Status)
 	}
 
 	data, err := ioutil.ReadAll(res.Body)
@@ -42,7 +42,7 @@ func (c *APIClient) get(uri string) ([]byte, error) {
 	}
 
 	if len(data) == 0 {
-		return nil, fmt.Errorf("Response body is empty")
+		return nil, fmt.Errorf("response body is empty")
 	}
 
 	return data, nil
@@ -50,7 +50,7 @@ func (c *APIClient) get(uri string) ([]byte, error) {
 
 func (c *APIClient) unmarshal(data []byte, i interface{}) error {
 	if err := json.Unmarshal(data, &i); err != nil {
-		return fmt.Errorf("Unmarshal failed: %s", err)
+		return fmt.Errorf("unmarshal failed: %s", err)
 	}
 
 	return nil
