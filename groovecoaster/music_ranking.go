@@ -1,9 +1,6 @@
 package groovecoaster
 
-import (
-	"fmt"
-	"strconv"
-)
+import "fmt"
 
 // Difficulty represents difficulty each of musics
 type Difficulty int
@@ -27,7 +24,7 @@ type RankingElement struct {
 }
 
 type ranking struct {
-	Count   string
+	Count   int               `json:",string"`
 	Ranking []*RankingElement `json:"score_rank"`
 }
 
@@ -43,16 +40,11 @@ func (c *APIClient) MusicRankingPageCount(id int, diff Difficulty) (int, error) 
 	var rd *ranking
 	c.unmarshal(data, &rd)
 
-	if rd == nil {
-		return -1, fmt.Errorf("Invalid JSON structure")
+	if rd.Ranking == nil {
+		return -1, fmt.Errorf("invalid JSON structure")
 	}
 
-	count, err := strconv.Atoi(rd.Count)
-	if err != nil {
-		return -1, fmt.Errorf("Invalid page count")
-	}
-
-	return count / 100, nil
+	return rd.Count / 100, nil
 }
 
 // MusicRanking fetches a music score ranking by music id and difficulty
@@ -68,7 +60,7 @@ func (c *APIClient) MusicRanking(id int, diff Difficulty, page int) ([]*RankingE
 	c.unmarshal(data, &rd)
 
 	if rd.Ranking == nil {
-		return nil, fmt.Errorf("Invalid JSON structure")
+		return nil, fmt.Errorf("invalid JSON structure")
 	}
 
 	return rd.Ranking, nil

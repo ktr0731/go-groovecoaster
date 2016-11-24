@@ -28,6 +28,38 @@ func TestMusicRankingPageCount(t *testing.T) {
 	}
 }
 
+func TestMusicRankingPageCount_BadStatus(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/score_ranking_bymusic_bydifficulty.php?music_id=290&difficulty=0",
+		httpmock.NewStringResponder(500, ""),
+	)
+
+	_, err := testClient.MusicRankingPageCount(290, Simple)
+	if err == nil {
+		t.Error(err)
+	}
+}
+
+func TestMusicRankingPageCount_InvalidJSON(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/score_ranking_bymusic_bydifficulty.php?music_id=290&difficulty=0",
+		httpmock.NewStringResponder(200, `{"test": "test"}`),
+	)
+
+	_, err := testClient.MusicRankingPageCount(290, Simple)
+	if err == nil {
+		t.Error(err)
+	}
+}
+
 func TestMusicRanking(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
@@ -45,6 +77,38 @@ func TestMusicRanking(t *testing.T) {
 
 	_, err = testClient.MusicRanking(290, Simple, 0)
 	if err != nil {
+		t.Error(err)
+	}
+}
+
+func TestMusicRanking_BadStatus(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/score_ranking_bymusic_bydifficulty.php?music_id=290&difficulty=0&page=0",
+		httpmock.NewStringResponder(500, ""),
+	)
+
+	_, err := testClient.MusicRanking(290, Simple, 0)
+	if err == nil {
+		t.Error(err)
+	}
+}
+
+func TestMusicRanking_InvalidJSON(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/score_ranking_bymusic_bydifficulty.php?music_id=290&difficulty=0&page=0",
+		httpmock.NewStringResponder(200, `{"test": "test"}`),
+	)
+
+	_, err := testClient.MusicRanking(290, Simple, 0)
+	if err == nil {
 		t.Error(err)
 	}
 }
