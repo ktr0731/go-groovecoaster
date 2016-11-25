@@ -22,7 +22,7 @@ func TestEventArchive(t *testing.T) {
 		httpmock.NewBytesResponder(200, data),
 	)
 
-	_, err = testClient.EventArchiveDetail(28)
+	_, err = testClient.EventArchive(28)
 	if err != nil {
 		t.Error(err)
 	}
@@ -38,7 +38,7 @@ func TestEventArchive_BadStatus(t *testing.T) {
 		httpmock.NewStringResponder(500, ""),
 	)
 
-	_, err := testClient.EventArchiveDetail(28)
+	_, err := testClient.EventArchive(28)
 	if err == nil {
 		t.Error(err)
 	}
@@ -54,7 +54,7 @@ func TestEventArchive_InvalidJSON(t *testing.T) {
 		httpmock.NewStringResponder(200, `{"test": "test"}`),
 	)
 
-	_, err := testClient.EventArchiveDetail(28)
+	_, err := testClient.EventArchive(28)
 	if err == nil {
 		t.Error(err)
 	}

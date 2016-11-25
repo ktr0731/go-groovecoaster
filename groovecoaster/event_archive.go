@@ -22,8 +22,8 @@ type eventDetail struct {
 	EventDetail *EventDetail `json:"event_data"`
 }
 
-// EventArchiveDetail fetches a event archive detail by event id
-func (c *APIClient) EventArchiveDetail(eventID int) (*EventDetail, error) {
+// EventArchive fetches a event archive detail by event id
+func (c *APIClient) EventArchive(eventID int) (*EventDetail, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/event_data.php?event_id=%d&old_flag=true"
 
 	data, err := c.get(fmt.Sprintf(uri, eventID))
