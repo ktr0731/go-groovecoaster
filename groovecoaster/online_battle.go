@@ -24,12 +24,12 @@ type OnlineBattleDetail struct {
 }
 
 type onlineBattleDetail struct {
-	OnlineBattleDetail []*OnlineBattleDetail
+	OnlineBattle []*OnlineBattleDetail
 }
 
-// OnlineBattleDetail fetches a online battle detail by eid and mid
-func (c *APIClient) OnlineBattleDetail(eid string, mid string) ([]*OnlineBattleDetail, error) {
-	const uri = "mypage.groovecoaster.jp/sp/json/online_battle_detail.php?eid=%s&mid=%s"
+// OnlineBattle fetches a online battle detail by eid and mid
+func (c *APIClient) OnlineBattle(eid int, mid int) ([]*OnlineBattleDetail, error) {
+	const uri = "mypage.groovecoaster.jp/sp/json/online_battle_detail.php?eid=%d&mid=%d"
 
 	data, err := c.get(fmt.Sprintf(uri, eid, mid))
 	if err != nil {
@@ -39,5 +39,5 @@ func (c *APIClient) OnlineBattleDetail(eid string, mid string) ([]*OnlineBattleD
 	var obd onlineBattleDetail
 	c.unmarshal(data, &obd)
 
-	return obd.OnlineBattleDetail, nil
+	return obd.OnlineBattle, nil
 }

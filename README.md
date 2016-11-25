@@ -26,11 +26,42 @@ $ export NESICA_PASSWORD
 ```
 
 ``` go
-gc, err := groovecoaster.New()
+client := groovecoaster.New()
 
-gc.Personal()
-gc.MusicList()
-gc.Music(509) // Music ID
+// Your information in /
+client.Personal()
+client.Statistics()
+
+// Outline of currently held event
+client.EventSummary()
+
+// All played musics summary
+client.MusicSummary()
+// The detail of a music by MusicID (client.MusicSummary() contains all MusicID)
+client.Music(161)
+// Total number of ranking pages by MusicID and difficulty
+client.MusicRankingPageCount(161, groovecoaster.Normal)
+// The ranking of a music by MusicID and difficulty
+client.MusicRanking(161, groovecoaster.Normal, 0)
+
+// Shop information
+client.ShopSummary()
+// All items that can be purchased
+client.ShopAvatars()
+client.ShopItems()
+client.ShopSkins()
+client.ShopMusics()
+client.ShopMessages()
+
+// All played online battle summary
+client.OnlineBattleSummary()
+// The detail of a result of online battle by EID and MID (client.OnlineBattleSummary() contains all EID and MID)
+client.OnlineBattle(34, 6448)
+
+// All events summary that has been held until now
+client.EventArchiveSummary()
+// The detail of a result of an event by EventID (client.EventArchiveSummary() contains all EventID)
+client.EventArchive()
 ```
 
 ## License

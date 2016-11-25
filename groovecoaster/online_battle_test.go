@@ -7,7 +7,7 @@ import (
 	"github.com/jarcoal/httpmock"
 )
 
-func TestOnlineBattleDetail(t *testing.T) {
+func TestOnlineBattle(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -22,13 +22,13 @@ func TestOnlineBattleDetail(t *testing.T) {
 		httpmock.NewBytesResponder(200, data),
 	)
 
-	_, err = testClient.OnlineBattleDetail("34", "6448")
+	_, err = testClient.OnlineBattle(34, 6448)
 	if err != nil {
 		t.Error(err)
 	}
 }
 
-func TestOnlineBattleDetail_InvalidJSON(t *testing.T) {
+func TestOnlineBattle_InvalidJSON(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -38,7 +38,7 @@ func TestOnlineBattleDetail_InvalidJSON(t *testing.T) {
 		httpmock.NewStringResponder(500, ""),
 	)
 
-	_, err := testClient.OnlineBattleDetail("34", "6448")
+	_, err := testClient.OnlineBattle(34, 6448)
 	if err == nil {
 		t.Error(err)
 	}

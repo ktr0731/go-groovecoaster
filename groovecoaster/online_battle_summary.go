@@ -8,13 +8,13 @@ type Player struct {
 
 // OnlineBattleSummary is the structure that represents a row of online battle list
 type OnlineBattleSummary struct {
-	Date       string
-	EID        string
+	EID        int          `json:",string"`
+	MID        int          `json:",string"`
+	Star       int          `json:",string"`
+	Players    []Player     `json:"detail"`
 	IsFavorite StringToBool `json:"fav"`
-	MID        string
+	Date       string
 	Rank       int
-	Star       int      `json:",string"`
-	Players    []Player `json:"detail"`
 }
 
 type onlineBattleSummary struct {
