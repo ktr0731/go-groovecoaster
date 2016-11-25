@@ -27,3 +27,19 @@ func TestShopMusics(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestShopMusics_BadStatus(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/shop_music_list.php",
+		httpmock.NewStringResponder(500, ""),
+	)
+
+	_, err := testClient.ShopMusics()
+	if err == nil {
+		t.Error(err)
+	}
+}

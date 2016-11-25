@@ -36,16 +36,16 @@ type playerData struct {
 }
 
 // Personal fetches player profile
-func (p *APIClient) Personal() (*Personal, error) {
+func (c *APIClient) Personal() (*Personal, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/player_data.php"
 
-	data, err := p.get(uri)
+	data, err := c.get(uri)
 	if err != nil {
 		return nil, err
 	}
 
 	var pd playerData
-	p.unmarshal(data, &pd)
+	c.unmarshal(data, &pd)
 
 	if pd.Personal == nil {
 		return nil, fmt.Errorf("Invalid JSON structure")
@@ -55,16 +55,16 @@ func (p *APIClient) Personal() (*Personal, error) {
 }
 
 // Statistics fetches music statistics
-func (p *APIClient) Statistics() (*Statistics, error) {
+func (c *APIClient) Statistics() (*Statistics, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/player_data.php"
 
-	data, err := p.get(uri)
+	data, err := c.get(uri)
 	if err != nil {
 		return nil, err
 	}
 
 	var pd playerData
-	p.unmarshal(data, &pd)
+	c.unmarshal(data, &pd)
 
 	if pd.Statistics == nil {
 		return nil, fmt.Errorf("Invalid JSON structure")

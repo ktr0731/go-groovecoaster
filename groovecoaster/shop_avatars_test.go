@@ -27,3 +27,19 @@ func TestShopAvatars(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestShopAvatars_BadStatus(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/shop_avatar_list.php",
+		httpmock.NewStringResponder(500, ""),
+	)
+
+	_, err := testClient.ShopAvatars()
+	if err == nil {
+		t.Error(err)
+	}
+}

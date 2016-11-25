@@ -7,7 +7,7 @@ import (
 	"github.com/jarcoal/httpmock"
 )
 
-func TestEventArchiveList(t *testing.T) {
+func TestEventArchiveSummary(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -22,13 +22,13 @@ func TestEventArchiveList(t *testing.T) {
 		httpmock.NewBytesResponder(200, data),
 	)
 
-	_, err = testClient.EventArchiveList()
+	_, err = testClient.EventArchiveSummary()
 	if err != nil {
 		t.Error(err)
 	}
 }
 
-func TestEventArchiveList_BadStatus(t *testing.T) {
+func TestEventArchiveSummary_BadStatus(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -38,13 +38,13 @@ func TestEventArchiveList_BadStatus(t *testing.T) {
 		httpmock.NewStringResponder(500, ""),
 	)
 
-	_, err := testClient.EventArchiveList()
+	_, err := testClient.EventArchiveSummary()
 	if err == nil {
 		t.Error(err)
 	}
 }
 
-func TestEventArchiveList_InvalidJSON(t *testing.T) {
+func TestEventArchiveSummary_InvalidJSON(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -54,7 +54,7 @@ func TestEventArchiveList_InvalidJSON(t *testing.T) {
 		httpmock.NewStringResponder(200, `{"test": "test"}`),
 	)
 
-	_, err := testClient.EventArchiveList()
+	_, err := testClient.EventArchiveSummary()
 	if err == nil {
 		t.Error(err)
 	}

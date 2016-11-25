@@ -27,3 +27,19 @@ func TestOnlineBattleDetail(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestOnlineBattleDetail_InvalidJSON(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/online_battle_detail.php?eid=34&mid=6448",
+		httpmock.NewStringResponder(500, ""),
+	)
+
+	_, err := testClient.OnlineBattleDetail("34", "6448")
+	if err == nil {
+		t.Error(err)
+	}
+}

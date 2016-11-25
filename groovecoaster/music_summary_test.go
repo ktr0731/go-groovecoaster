@@ -43,19 +43,3 @@ func TestMusicList_BadStatus(t *testing.T) {
 		t.Error(err)
 	}
 }
-
-func TestMusicList_InvalidJSON(t *testing.T) {
-	httpmock.Activate()
-	defer httpmock.DeactivateAndReset()
-
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/music_list.php",
-		httpmock.NewStringResponder(200, `{"test": "test"}`),
-	)
-
-	_, err := testClient.MusicSummary()
-	if err == nil {
-		t.Error(err)
-	}
-}

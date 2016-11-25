@@ -1,7 +1,5 @@
 package groovecoaster
 
-import "fmt"
-
 // MusicSummary is the structure that represents a row of music list
 type MusicSummary struct {
 	ID           int    `json:"music_id"`
@@ -25,10 +23,6 @@ func (p *APIClient) MusicSummary() ([]*MusicSummary, error) {
 
 	var ml musicSummary
 	p.unmarshal(data, &ml)
-
-	if ml.MusicSummary == nil {
-		return nil, fmt.Errorf("invalid JSON structure")
-	}
 
 	return ml.MusicSummary, nil
 }

@@ -27,3 +27,19 @@ func TestOnlineBattleSummary(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestOnlineBattleSummary_BadStatus(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/online_battle_list.php",
+		httpmock.NewStringResponder(500, ""),
+	)
+
+	_, err := testClient.OnlineBattleSummary()
+	if err == nil {
+		t.Error(err)
+	}
+}

@@ -2,11 +2,11 @@ package groovecoaster
 
 // ShopSkins is the structure that represents shop sales info about skins
 type ShopSkins struct {
-	GC        int `json:",string"`
+	ProductID string `json:"product_id"`
+	GC        int    `json:",string"`
 	ID        int
 	Name      string
 	New       StringToBool
-	ProductID string `json:"product_id"`
 }
 
 type shopSkins struct {
@@ -14,16 +14,16 @@ type shopSkins struct {
 }
 
 // ShopSkins fetches all skins in shop
-func (p *APIClient) ShopSkins() ([]*ShopSkins, error) {
+func (c *APIClient) ShopSkins() ([]*ShopSkins, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_skin_list.php"
 
-	data, err := p.get(uri)
+	data, err := c.get(uri)
 	if err != nil {
 		return nil, err
 	}
 
 	var ss shopSkins
-	p.unmarshal(data, &ss)
+	c.unmarshal(data, &ss)
 
 	return ss.ShopSkins, nil
 }

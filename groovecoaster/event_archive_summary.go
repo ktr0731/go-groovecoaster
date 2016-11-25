@@ -10,12 +10,12 @@ type EventArchive struct {
 	Title     string
 }
 
-type eventArchiveList struct {
-	EventArchiveList []*EventArchive `json:"event_info_list"`
+type eventArchiveSummary struct {
+	EventArchiveSummary []*EventArchive `json:"event_info_list"`
 }
 
-// EventArchiveList fetches all events that has been held until now
-func (c *APIClient) EventArchiveList() ([]*EventArchive, error) {
+// EventArchiveSummary fetches all events that has been held until now
+func (c *APIClient) EventArchiveSummary() ([]*EventArchive, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/event_info_list.php"
 
 	data, err := c.get(uri)
@@ -23,12 +23,12 @@ func (c *APIClient) EventArchiveList() ([]*EventArchive, error) {
 		return nil, err
 	}
 
-	var ea eventArchiveList
+	var ea eventArchiveSummary
 	c.unmarshal(data, &ea)
 
-	if ea.EventArchiveList == nil {
-		return nil, fmt.Errorf("invalid JSON structure: EventArchiveList()")
+	if ea.EventArchiveSummary == nil {
+		return nil, fmt.Errorf("invalid JSON structure: EventArchiveSummary()")
 	}
 
-	return ea.EventArchiveList, nil
+	return ea.EventArchiveSummary, nil
 }

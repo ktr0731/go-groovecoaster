@@ -19,8 +19,8 @@ type Shop struct {
 	Coin   int    `json:"current_coin"`
 }
 
-// Shop fetches shop information
-func (c *APIClient) Shop() (*Shop, error) {
+// ShopSummary fetches shop information
+func (c *APIClient) ShopSummary() (*Shop, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_sales_data.php"
 
 	data, err := c.get(uri)

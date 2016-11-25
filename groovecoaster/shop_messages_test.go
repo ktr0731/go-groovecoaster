@@ -30,6 +30,24 @@ func TestShopMessages(t *testing.T) {
 	}
 }
 
+func TestShopMessages_BadStatus(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	for i := 1; i <= 5; i++ {
+		httpmock.RegisterResponder(
+			"GET",
+			fmt.Sprintf(scheme+"mypage.groovecoaster.jp/sp/#/sp_me/%d", i),
+			httpmock.NewStringResponder(500, ""),
+		)
+	}
+
+	_, err := testClient.ShopMessages()
+	if err == nil {
+		t.Error(err)
+	}
+}
+
 func read(i int) ([]byte, error) {
 	data, err := ioutil.ReadFile(fmt.Sprintf("../tests/assets/shop_message_list_%d.json", i))
 	if err != nil {

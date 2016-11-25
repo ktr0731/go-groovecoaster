@@ -2,12 +2,12 @@ package groovecoaster
 
 // ShopMusics is the structure that represents shop sales info about musics
 type ShopMusics struct {
+	ProductID string `json:"product_id"`
+	GC        int    `json:",string"`
 	Artist    string
-	GC        int `json:",string"`
 	ID        int
 	Name      string
 	New       StringToBool
-	ProductID string `json:"product_id"`
 }
 
 type shopMusics struct {
@@ -15,16 +15,16 @@ type shopMusics struct {
 }
 
 // ShopMusics fetches all musics in shop
-func (p *APIClient) ShopMusics() ([]*ShopMusics, error) {
+func (c *APIClient) ShopMusics() ([]*ShopMusics, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_music_list.php"
 
-	data, err := p.get(uri)
+	data, err := c.get(uri)
 	if err != nil {
 		return nil, err
 	}
 
 	var sm shopMusics
-	p.unmarshal(data, &sm)
+	c.unmarshal(data, &sm)
 
 	return sm.ShopMusics, nil
 }

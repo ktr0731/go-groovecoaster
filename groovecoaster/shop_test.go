@@ -7,7 +7,7 @@ import (
 	"github.com/jarcoal/httpmock"
 )
 
-func TestShop(t *testing.T) {
+func TestShopSummary(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -22,13 +22,13 @@ func TestShop(t *testing.T) {
 		httpmock.NewBytesResponder(200, data),
 	)
 
-	_, err = testClient.Shop()
+	_, err = testClient.ShopSummary()
 	if err != nil {
 		t.Error(err)
 	}
 }
 
-func TestShop_InvalidJSON(t *testing.T) {
+func TestShopSummary_InvalidJSON(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -38,13 +38,13 @@ func TestShop_InvalidJSON(t *testing.T) {
 		httpmock.NewStringResponder(200, `{"test": "test"}`),
 	)
 
-	_, err := testClient.Shop()
+	_, err := testClient.ShopSummary()
 	if err == nil {
 		t.Error(err)
 	}
 }
 
-func TestShop_BadStatus(t *testing.T) {
+func TestShopSummary_BadStatus(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
@@ -54,7 +54,7 @@ func TestShop_BadStatus(t *testing.T) {
 		httpmock.NewStringResponder(500, `{"test": "test"}`),
 	)
 
-	_, err := testClient.Shop()
+	_, err := testClient.ShopSummary()
 	if err == nil {
 		t.Error(err)
 	}

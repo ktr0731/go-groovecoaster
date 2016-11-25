@@ -27,3 +27,19 @@ func TestShopSkins(t *testing.T) {
 		t.Error(err)
 	}
 }
+
+func TestShopSkins_BadStatus(t *testing.T) {
+	httpmock.Activate()
+	defer httpmock.DeactivateAndReset()
+
+	httpmock.RegisterResponder(
+		"GET",
+		scheme+"mypage.groovecoaster.jp/sp/json/shop_skin_list.php",
+		httpmock.NewStringResponder(500, ""),
+	)
+
+	_, err := testClient.ShopSkins()
+	if err == nil {
+		t.Error(err)
+	}
+}
