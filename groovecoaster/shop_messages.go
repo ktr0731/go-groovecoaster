@@ -25,7 +25,7 @@ type ShopMessages struct {
 }
 
 // ShopMessages fetches all musics in shop
-func (p *APIClient) ShopMessages() (*ShopMessages, error) {
+func (c *APIClient) ShopMessages() (*ShopMessages, error) {
 	const uri = "mypage.groovecoaster.jp/sp/#/sp_me/%d"
 	const (
 		Communication = iota
@@ -39,12 +39,12 @@ func (p *APIClient) ShopMessages() (*ShopMessages, error) {
 	var messages = make([][]*Messages, 5)
 	for i := Communication; i <= Character; i++ {
 		var message *shopMessages
-		data, err := p.get(fmt.Sprintf(uri, i+1))
+		data, err := c.get(fmt.Sprintf(uri, i+1))
 		if err != nil {
 			return nil, err
 		}
 
-		p.unmarshal(data, &message)
+		c.unmarshal(data, &message)
 		messages[i] = message.ShopMessages
 	}
 

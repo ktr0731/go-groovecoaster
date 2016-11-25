@@ -22,16 +22,16 @@ type onlineBattleSummary struct {
 }
 
 // OnlineBattleSummary fetches all online battle results
-func (p *APIClient) OnlineBattleSummary() ([]*OnlineBattleSummary, error) {
+func (c *APIClient) OnlineBattleSummary() ([]*OnlineBattleSummary, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/online_battle_list.php"
 
-	data, err := p.get(uri)
+	data, err := c.get(uri)
 	if err != nil {
 		return nil, err
 	}
 
 	var obs onlineBattleSummary
-	p.unmarshal(data, &obs)
+	c.unmarshal(data, &obs)
 
 	return obs.OnlineBattleSummary, nil
 }

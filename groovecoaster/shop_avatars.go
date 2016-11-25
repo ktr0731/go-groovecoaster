@@ -14,16 +14,16 @@ type shopAvatars struct {
 }
 
 // ShopAvatars fetches all avatars in shop
-func (p *APIClient) ShopAvatars() ([]*ShopAvatars, error) {
+func (c *APIClient) ShopAvatars() ([]*ShopAvatars, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_avatar_list.php"
 
-	data, err := p.get(uri)
+	data, err := c.get(uri)
 	if err != nil {
 		return nil, err
 	}
 
 	var sa shopAvatars
-	p.unmarshal(data, &sa)
+	c.unmarshal(data, &sa)
 
 	return sa.ShopAvatars, nil
 }
