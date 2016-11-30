@@ -11,51 +11,53 @@ func TestEventArchive(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
-	data, err := ioutil.ReadFile("../tests/assets/event_data.json")
-	if err != nil {
-		t.Error(err)
+	tests := []struct {
+		assetName string
+		uri       string
+		status    int
+		success   bool
+	}{
+		{
+			"../tests/assets/event_data.json",
+			"mypage.groovecoaster.jp/sp/json/event_data.php?event_id=28&old_flag=true",
+			200,
+			true,
+		},
+		{
+			"",
+			"mypage.groovecoaster.jp/sp/json/event_data.php?event_id=28&old_flag=true",
+			500,
+			false,
+		},
+		{
+			"../tests/assets/invalid_structure.json",
+			"mypage.groovecoaster.jp/sp/json/event_data.php?event_id=28&old_flag=true",
+			200,
+			false,
+		},
 	}
 
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/event_data.php?event_id=28&old_flag=true",
-		httpmock.NewBytesResponder(200, data),
-	)
+	for _, test := range tests {
+		data := []byte("")
 
-	_, err = testClient.EventArchive(28)
-	if err != nil {
-		t.Error(err)
-	}
-}
+		if test.assetName != "" {
+			var err error
 
-func TestEventArchive_BadStatus(t *testing.T) {
-	httpmock.Activate()
-	defer httpmock.DeactivateAndReset()
+			data, err = ioutil.ReadFile(test.assetName)
+			if err != nil {
+				t.Error(err)
+			}
+		}
 
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/event_data.php?event_id=28&old_flag=true",
-		httpmock.NewStringResponder(500, ""),
-	)
+		httpmock.RegisterResponder(
+			"GET",
+			scheme+test.uri,
+			httpmock.NewBytesResponder(test.status, data),
+		)
 
-	_, err := testClient.EventArchive(28)
-	if err == nil {
-		t.Error(err)
-	}
-}
-
-func TestEventArchive_InvalidJSON(t *testing.T) {
-	httpmock.Activate()
-	defer httpmock.DeactivateAndReset()
-
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/event_data.php?event_id=28&old_flag=true",
-		httpmock.NewStringResponder(200, `{"test": "test"}`),
-	)
-
-	_, err := testClient.EventArchive(28)
-	if err == nil {
-		t.Error(err)
+		_, err := testClient.EventArchive(28)
+		if err != nil && test.success {
+			t.Error(err)
+		}
 	}
 }
