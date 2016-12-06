@@ -11,35 +11,37 @@ func TestOnlineBattle(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
-	data, err := ioutil.ReadFile("../tests/assets/online_battle_detail.json")
-	if err != nil {
-		t.Error(err)
+	tests := []struct {
+		assetName string
+		status    int
+		success   bool
+	}{
+		{"../tests/assets/online_battle_detail.json", 200, true},
+		{"", 500, false},
+		{"", 200, false},
 	}
 
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/online_battle_detail.php?eid=34&mid=6448",
-		httpmock.NewBytesResponder(200, data),
-	)
+	for _, test := range tests {
+		data := []byte("")
 
-	_, err = testClient.OnlineBattle(34, 6448)
-	if err != nil {
-		t.Error(err)
-	}
-}
+		if test.assetName != "" {
+			var err error
 
-func TestOnlineBattle_InvalidJSON(t *testing.T) {
-	httpmock.Activate()
-	defer httpmock.DeactivateAndReset()
+			data, err = ioutil.ReadFile(test.assetName)
+			if err != nil {
+				t.Error(err)
+			}
+		}
 
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/online_battle_detail.php?eid=34&mid=6448",
-		httpmock.NewStringResponder(500, ""),
-	)
+		httpmock.RegisterResponder(
+			"GET",
+			scheme+"mypage.groovecoaster.jp/sp/json/online_battle_detail.php?eid=34&mid=6448",
+			httpmock.NewBytesResponder(test.status, data),
+		)
 
-	_, err := testClient.OnlineBattle(34, 6448)
-	if err == nil {
-		t.Error(err)
+		_, err := testClient.OnlineBattle(34, 6448)
+		if err != nil && test.success {
+			t.Error(err)
+		}
 	}
 }
