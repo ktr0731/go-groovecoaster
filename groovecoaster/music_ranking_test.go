@@ -18,21 +18,9 @@ func TestMusicRankingPageCount(t *testing.T) {
 	defer httpmock.DeactivateAndReset()
 
 	tests := []testSuit{
-		{
-			"../tests/assets/music_ranking.json",
-			200,
-			true,
-		},
-		{
-			"",
-			500,
-			false,
-		},
-		{
-			"",
-			200,
-			false,
-		},
+		{"../tests/assets/music_ranking.json", 200, true},
+		{"", 500, false},
+		{"", 200, false},
 	}
 
 	for _, test := range tests {
@@ -65,21 +53,9 @@ func TestMusicRanking(t *testing.T) {
 	defer httpmock.DeactivateAndReset()
 
 	tests := []testSuit{
-		{
-			"../tests/assets/music_ranking.json",
-			200,
-			true,
-		},
-		{
-			"",
-			500,
-			false,
-		},
-		{
-			"",
-			200,
-			false,
-		},
+		{"../tests/assets/music_ranking.json", 200, true},
+		{"", 500, false},
+		{"", 200, false},
 	}
 
 	for _, test := range tests {

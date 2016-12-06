@@ -11,56 +11,37 @@ func TestMusic(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
-	data, err := ioutil.ReadFile("../tests/assets/music_detail.json")
-	if err != nil {
-		t.Error(err)
+	tests := []struct {
+		assetName string
+		status    int
+		success   bool
+	}{
+		{"../tests/assets/music_detail.json", 200, true},
+		{"../tests/assets/music_detail_not_played.json", 200, false},
+		{"", 500, false},
+		{"", 200, false},
 	}
 
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/music_detail.php?music_id=0",
-		httpmock.NewBytesResponder(200, data),
-	)
+	for _, test := range tests {
+		data := []byte("")
+		if test.assetName != "" {
+			var err error
+			data, err = ioutil.ReadFile(test.assetName)
+			if err != nil {
+				t.Error(err)
+			}
+		}
 
-	_, err = testClient.Music(0)
-	if err != nil {
-		t.Error(err)
-	}
-}
+		httpmock.RegisterResponder(
+			"GET",
+			scheme+"mypage.groovecoaster.jp/sp/json/music_detail.php?music_id=0",
+			httpmock.NewBytesResponder(test.status, data),
+		)
 
-func TestMusic_BadStatus(t *testing.T) {
-	httpmock.Activate()
-	defer httpmock.DeactivateAndReset()
-
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/music_detail.php?music_id=0",
-		httpmock.NewStringResponder(500, ""),
-	)
-
-	_, err := testClient.Music(0)
-	if err == nil {
-		t.Error(err)
-	}
-}
-
-func TestMusic_NotPlayed(t *testing.T) {
-	httpmock.Activate()
-	defer httpmock.DeactivateAndReset()
-
-	data, err := ioutil.ReadFile("../tests/assets/music_detail_not_played.json")
-	if err != nil {
-		t.Error(err)
+		_, err := testClient.Music(0)
+		if err != nil && test.success {
+			t.Error(err)
+		}
 	}
 
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/music_detail.php?music_id=0",
-		httpmock.NewBytesResponder(200, data),
-	)
-
-	_, err = testClient.Music(0)
-	if err != nil {
-		t.Error(err)
-	}
 }
