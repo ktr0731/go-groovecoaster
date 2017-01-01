@@ -1,5 +1,6 @@
 test:
   pre:
     - go get github.com/jarcoal/httpmock
+    - go get github.com/joho/godotenv
   override:
     - go test -v -race ./groovecoaster
