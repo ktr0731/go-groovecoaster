@@ -11,35 +11,37 @@ func TestShopAvatars(t *testing.T) {
 	httpmock.Activate()
 	defer httpmock.DeactivateAndReset()
 
-	data, err := ioutil.ReadFile("../tests/assets/shop_avatar_list.json")
-	if err != nil {
-		t.Error(err)
+	tests := []struct {
+		assetName string
+		status    int
+		success   bool
+	}{
+		{"../tests/assets/shop_avatar_list.json", 200, true},
+		{"", 500, false},
+		{"", 200, false},
 	}
 
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/shop_avatar_list.php",
-		httpmock.NewBytesResponder(200, data),
-	)
+	for _, test := range tests {
+		data := []byte("")
 
-	_, err = testClient.ShopAvatars()
-	if err != nil {
-		t.Error(err)
-	}
-}
+		if test.assetName != "" {
+			var err error
 
-func TestShopAvatars_BadStatus(t *testing.T) {
-	httpmock.Activate()
-	defer httpmock.DeactivateAndReset()
+			data, err = ioutil.ReadFile(test.assetName)
+			if err != nil {
+				t.Error(err)
+			}
+		}
 
-	httpmock.RegisterResponder(
-		"GET",
-		scheme+"mypage.groovecoaster.jp/sp/json/shop_avatar_list.php",
-		httpmock.NewStringResponder(500, ""),
-	)
+		httpmock.RegisterResponder(
+			"GET",
+			scheme+"mypage.groovecoaster.jp/sp/json/shop_avatar_list.php",
+			httpmock.NewBytesResponder(test.status, data),
+		)
 
-	_, err := testClient.ShopAvatars()
-	if err == nil {
-		t.Error(err)
+		_, err := testClient.ShopAvatars()
+		if err != nil && test.success {
+			t.Error(err)
+		}
 	}
 }
