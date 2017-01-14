@@ -10,6 +10,17 @@ type IntToBool bool
 
 // UnmarshalJSON unmarshals int to bool
 func (i *IntToBool) UnmarshalJSON(bytes []byte) error {
+	// If called from receiver that already marshaled from int to bool, bytes indicates bool.
+	// So has to check it before strconv.
+	switch string(bytes) {
+	case "true":
+		*i = true
+		return nil
+	case "false":
+		*i = false
+		return nil
+	}
+
 	n, err := strconv.Atoi(string(bytes))
 	if err != nil {
 		return err
