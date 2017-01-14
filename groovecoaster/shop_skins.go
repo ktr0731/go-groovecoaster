@@ -9,10 +9,6 @@ type ShopSkins struct {
 	New       StringToBool
 }
 
-type shopSkins struct {
-	ShopSkins []*ShopSkins `json:"product_list"`
-}
-
 // ShopSkins fetches all skins in shop
 func (c *APIClient) ShopSkins() ([]*ShopSkins, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_skin_list.php"
@@ -22,7 +18,9 @@ func (c *APIClient) ShopSkins() ([]*ShopSkins, error) {
 		return nil, err
 	}
 
-	var ss shopSkins
+	var ss struct {
+		ShopSkins []*ShopSkins `json:"product_list"`
+	}
 	c.unmarshal(data, &ss)
 
 	return ss.ShopSkins, nil

@@ -23,10 +23,6 @@ type OnlineBattleDetail struct {
 	Avatar      string
 }
 
-type onlineBattleDetail struct {
-	OnlineBattle []*OnlineBattleDetail
-}
-
 // OnlineBattle fetches a online battle detail by eid and mid
 func (c *APIClient) OnlineBattle(eid int, mid int) ([]*OnlineBattleDetail, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/online_battle_detail.php?eid=%d&mid=%d"
@@ -36,7 +32,9 @@ func (c *APIClient) OnlineBattle(eid int, mid int) ([]*OnlineBattleDetail, error
 		return nil, err
 	}
 
-	var obd onlineBattleDetail
+	var obd struct {
+		OnlineBattle []*OnlineBattleDetail
+	}
 	c.unmarshal(data, &obd)
 
 	return obd.OnlineBattle, nil

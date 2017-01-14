@@ -9,10 +9,6 @@ type ShopAvatars struct {
 	ProductID string `json:"product_id"`
 }
 
-type shopAvatars struct {
-	ShopAvatars []*ShopAvatars `json:"product_list"`
-}
-
 // ShopAvatars fetches all avatars in shop
 func (c *APIClient) ShopAvatars() ([]*ShopAvatars, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_avatar_list.php"
@@ -22,7 +18,9 @@ func (c *APIClient) ShopAvatars() ([]*ShopAvatars, error) {
 		return nil, err
 	}
 
-	var sa shopAvatars
+	var sa struct {
+		ShopAvatars []*ShopAvatars `json:"product_list"`
+	}
 	c.unmarshal(data, &sa)
 
 	return sa.ShopAvatars, nil

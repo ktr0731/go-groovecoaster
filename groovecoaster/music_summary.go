@@ -8,10 +8,6 @@ type MusicSummary struct {
 	LastPlayTime string `json:"last_play_time"`
 }
 
-type musicSummary struct {
-	MusicSummary []*MusicSummary `json:"music_list"`
-}
-
 // MusicSummary fetches all musics name by array
 func (c *APIClient) MusicSummary() ([]*MusicSummary, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/music_list.php"
@@ -21,8 +17,10 @@ func (c *APIClient) MusicSummary() ([]*MusicSummary, error) {
 		return nil, err
 	}
 
-	var ml musicSummary
-	c.unmarshal(data, &ml)
+	var ms struct {
+		MusicSummary []*MusicSummary `json:"music_list"`
+	}
+	c.unmarshal(data, &ms)
 
-	return ml.MusicSummary, nil
+	return ms.MusicSummary, nil
 }

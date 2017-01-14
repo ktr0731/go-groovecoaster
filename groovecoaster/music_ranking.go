@@ -23,11 +23,6 @@ type RankingElement struct {
 	Title            string
 }
 
-type ranking struct {
-	Count   int               `json:",string"`
-	Ranking []*RankingElement `json:"score_rank"`
-}
-
 // MusicRankingPageCount fetches last page number by music id and difficulty
 func (c *APIClient) MusicRankingPageCount(id int, diff Difficulty) (int, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/score_ranking_bymusic_bydifficulty.php?music_id=%d&difficulty=%d"
@@ -37,7 +32,10 @@ func (c *APIClient) MusicRankingPageCount(id int, diff Difficulty) (int, error) 
 		return -1, err
 	}
 
-	var rd *ranking
+	var rd struct {
+		Count   int               `json:",string"`
+		Ranking []*RankingElement `json:"score_rank"`
+	}
 	c.unmarshal(data, &rd)
 
 	if rd.Ranking == nil {
@@ -56,7 +54,10 @@ func (c *APIClient) MusicRanking(id int, diff Difficulty, page int) ([]*RankingE
 		return nil, err
 	}
 
-	var rd *ranking
+	var rd struct {
+		Count   int               `json:",string"`
+		Ranking []*RankingElement `json:"score_rank"`
+	}
 	c.unmarshal(data, &rd)
 
 	if rd.Ranking == nil {

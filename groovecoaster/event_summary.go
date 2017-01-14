@@ -17,10 +17,6 @@ type EventSummary struct {
 	Title        string `json:"title_name"`
 }
 
-type eventSummary struct {
-	*EventSummary `json:"event_data"`
-}
-
 // EventSummary fetches a summary of event
 func (c *APIClient) EventSummary() (*EventSummary, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/event_data.php"
@@ -30,7 +26,9 @@ func (c *APIClient) EventSummary() (*EventSummary, error) {
 		return nil, err
 	}
 
-	var es eventSummary
+	var es struct {
+		*EventSummary `json:"event_data"`
+	}
 	c.unmarshal(data, &es)
 
 	if es.EventSummary == nil {

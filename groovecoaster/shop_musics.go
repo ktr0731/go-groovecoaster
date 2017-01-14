@@ -10,10 +10,6 @@ type ShopMusics struct {
 	New       StringToBool
 }
 
-type shopMusics struct {
-	ShopMusics []*ShopMusics `json:"product_list"`
-}
-
 // ShopMusics fetches all musics in shop
 func (c *APIClient) ShopMusics() ([]*ShopMusics, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_music_list.php"
@@ -23,7 +19,9 @@ func (c *APIClient) ShopMusics() ([]*ShopMusics, error) {
 		return nil, err
 	}
 
-	var sm shopMusics
+	var sm struct {
+		ShopMusics []*ShopMusics `json:"product_list"`
+	}
 	c.unmarshal(data, &sm)
 
 	return sm.ShopMusics, nil

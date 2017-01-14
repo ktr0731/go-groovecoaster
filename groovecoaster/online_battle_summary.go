@@ -17,10 +17,6 @@ type OnlineBattleSummary struct {
 	Rank       int
 }
 
-type onlineBattleSummary struct {
-	OnlineBattleSummary []*OnlineBattleSummary `json:"onlineBattleList"`
-}
-
 // OnlineBattleSummary fetches all online battle results
 func (c *APIClient) OnlineBattleSummary() ([]*OnlineBattleSummary, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/online_battle_list.php"
@@ -30,7 +26,9 @@ func (c *APIClient) OnlineBattleSummary() ([]*OnlineBattleSummary, error) {
 		return nil, err
 	}
 
-	var obs onlineBattleSummary
+	var obs struct {
+		OnlineBattleSummary []*OnlineBattleSummary `json:"onlineBattleList"`
+	}
 	c.unmarshal(data, &obs)
 
 	return obs.OnlineBattleSummary, nil

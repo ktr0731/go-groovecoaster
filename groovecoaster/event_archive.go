@@ -18,10 +18,6 @@ type EventDetail struct {
 	Title     string             `json:"title_name"`
 }
 
-type eventDetail struct {
-	EventDetail *EventDetail `json:"event_data"`
-}
-
 // EventArchive fetches a event archive detail by event id
 func (c *APIClient) EventArchive(eventID int) (*EventDetail, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/event_data.php?event_id=%d&old_flag=true"
@@ -31,7 +27,9 @@ func (c *APIClient) EventArchive(eventID int) (*EventDetail, error) {
 		return nil, err
 	}
 
-	var ed eventDetail
+	var ed struct {
+		EventDetail *EventDetail `json:"event_data"`
+	}
 	c.unmarshal(data, &ed)
 
 	if ed.EventDetail == nil {

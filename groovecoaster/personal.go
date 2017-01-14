@@ -30,11 +30,6 @@ type Personal struct {
 	TrophyRank        string `json:"trophy_rank"`
 }
 
-type playerData struct {
-	Personal   *Personal   `json:"player_data"`
-	Statistics *Statistics `json:"stage"`
-}
-
 // Personal fetches player profile
 func (c *APIClient) Personal() (*Personal, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/player_data.php"
@@ -44,7 +39,10 @@ func (c *APIClient) Personal() (*Personal, error) {
 		return nil, err
 	}
 
-	var pd playerData
+	var pd struct {
+		Personal   *Personal   `json:"player_data"`
+		Statistics *Statistics `json:"stage"`
+	}
 	c.unmarshal(data, &pd)
 
 	if pd.Personal == nil {
@@ -63,7 +61,10 @@ func (c *APIClient) Statistics() (*Statistics, error) {
 		return nil, err
 	}
 
-	var pd playerData
+	var pd struct {
+		Personal   *Personal   `json:"player_data"`
+		Statistics *Statistics `json:"stage"`
+	}
 	c.unmarshal(data, &pd)
 
 	if pd.Statistics == nil {

@@ -10,10 +10,6 @@ type EventArchive struct {
 	Title     string
 }
 
-type eventArchiveSummary struct {
-	EventArchiveSummary []*EventArchive `json:"event_info_list"`
-}
-
 // EventArchiveSummary fetches all events that has been held until now
 func (c *APIClient) EventArchiveSummary() ([]*EventArchive, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/event_info_list.php"
@@ -23,7 +19,9 @@ func (c *APIClient) EventArchiveSummary() ([]*EventArchive, error) {
 		return nil, err
 	}
 
-	var ea eventArchiveSummary
+	var ea struct {
+		EventArchiveSummary []*EventArchive `json:"event_info_list"`
+	}
 	c.unmarshal(data, &ea)
 
 	if ea.EventArchiveSummary == nil {

@@ -33,18 +33,6 @@ type MusicDetail struct {
 	Message    string
 }
 
-type tmp struct {
-	MusicDetail struct {
-		Rank []struct {
-			Rank int
-		} `json:"user_rank"`
-	} `json:"music_detail"`
-}
-
-type musicDetail struct {
-	MusicDetail MusicDetail `json:"music_detail"`
-}
-
 // Music fetches a music detail by music id
 func (c *APIClient) Music(id int) (*MusicDetail, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/music_detail.php?music_id=%d"
@@ -54,12 +42,22 @@ func (c *APIClient) Music(id int) (*MusicDetail, error) {
 		return nil, err
 	}
 
-	var mdd musicDetail
-	var tmp tmp
-	c.unmarshal(data, &mdd)
+	var _md struct {
+		MusicDetail MusicDetail `json:"music_detail"`
+	}
+
+	var tmp struct {
+		MusicDetail struct {
+			Rank []struct {
+				Rank int
+			} `json:"user_rank"`
+		} `json:"music_detail"`
+	}
+
+	c.unmarshal(data, &_md)
 	c.unmarshal(data, &tmp)
 
-	md := mdd.MusicDetail
+	md := _md.MusicDetail
 
 	if md.Simple != nil {
 		md.Simple.Rank = tmp.MusicDetail.Rank[0].Rank

@@ -11,10 +11,6 @@ type Messages struct {
 	ProductID string `json:"product_id"`
 }
 
-type shopMessages struct {
-	ShopMessages []*Messages `json:"product_list"`
-}
-
 // ShopMessages is the structure that is a set of each categories
 type ShopMessages struct {
 	Communication []*Messages
@@ -26,6 +22,10 @@ type ShopMessages struct {
 
 // ShopMessages fetches all musics in shop
 func (c *APIClient) ShopMessages() (*ShopMessages, error) {
+	type shopMessages struct {
+		ShopMessages []*Messages `json:"product_list"`
+	}
+
 	const uri = "mypage.groovecoaster.jp/sp/#/sp_me/%d"
 	const (
 		Communication = iota
