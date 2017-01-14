@@ -42,7 +42,7 @@ type tmp struct {
 }
 
 type musicDetail struct {
-	MusicDetail *MusicDetail `json:"music_detail"`
+	MusicDetail MusicDetail `json:"music_detail"`
 }
 
 // Music fetches a music detail by music id
@@ -54,10 +54,12 @@ func (c *APIClient) Music(id int) (*MusicDetail, error) {
 		return nil, err
 	}
 
-	var md MusicDetail
+	var mdd musicDetail
 	var tmp tmp
-	c.unmarshal(data, &md)
+	c.unmarshal(data, &mdd)
 	c.unmarshal(data, &tmp)
+
+	md := mdd.MusicDetail
 
 	if md.Simple != nil {
 		md.Simple.Rank = tmp.MusicDetail.Rank[0].Rank
