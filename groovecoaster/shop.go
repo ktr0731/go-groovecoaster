@@ -1,7 +1,5 @@
 package groovecoaster
 
-import "fmt"
-
 // Sales is the structure that represents shop sales info
 type Sales struct {
 	Avatar  IntToBool `json:"avatar_sale"`
@@ -14,26 +12,22 @@ type Sales struct {
 
 // Shop is the structure that contains sales info, whether is openning
 type Shop struct {
-	Sales  *Sales `json:"shop_data"`
-	IsOpen bool   `json:"open_flg"`
-	Coin   int    `json:"current_coin"`
+	Sales  Sales `json:"shop_data"`
+	IsOpen bool  `json:"open_flg"`
+	Coin   int   `json:"current_coin"`
 }
 
 // ShopSummary fetches shop information
-func (c *APIClient) ShopSummary() (*Shop, error) {
+func (c *APIClient) ShopSummary() (Shop, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_sales_data.php"
 
 	data, err := c.get(uri)
 	if err != nil {
-		return nil, err
+		return Shop{}, err
 	}
 
-	var s *Shop
+	var s Shop
 	c.unmarshal(data, &s)
-
-	if s.Sales == nil {
-		return nil, fmt.Errorf("Invalid JSON structure")
-	}
 
 	return s, nil
 }

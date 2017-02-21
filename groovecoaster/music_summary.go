@@ -9,7 +9,7 @@ type MusicSummary struct {
 }
 
 // MusicSummary fetches all musics name by array
-func (c *APIClient) MusicSummary() ([]*MusicSummary, error) {
+func (c *APIClient) MusicSummary() ([]MusicSummary, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/music_list.php"
 
 	data, err := c.get(uri)
@@ -18,7 +18,7 @@ func (c *APIClient) MusicSummary() ([]*MusicSummary, error) {
 	}
 
 	var ms struct {
-		MusicSummary []*MusicSummary `json:"music_list"`
+		MusicSummary []MusicSummary `json:"music_list"`
 	}
 	c.unmarshal(data, &ms)
 

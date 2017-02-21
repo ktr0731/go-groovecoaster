@@ -19,10 +19,10 @@ type Result struct {
 
 // MusicDetail is the structure that represents a music detail
 type MusicDetail struct {
-	Simple     *Result   `json:"simple_result_data"`
-	Normal     *Result   `json:"normal_result_data"`
-	Hard       *Result   `json:"hard_result_data"`
-	Extra      *Result   `json:"extra_result_data"`
+	Simple     Result    `json:"simple_result_data"`
+	Normal     Result    `json:"normal_result_data"`
+	Hard       Result    `json:"hard_result_data"`
+	Extra      Result    `json:"extra_result_data"`
 	HasEx      IntToBool `json:"ex_flag"`
 	ID         string    `json:"music_id"`
 	Title      string    `json:"music_title"`
@@ -34,12 +34,12 @@ type MusicDetail struct {
 }
 
 // Music fetches a music detail by music id
-func (c *APIClient) Music(id int) (*MusicDetail, error) {
+func (c *APIClient) Music(id int) (MusicDetail, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/music_detail.php?music_id=%d"
 
 	data, err := c.get(fmt.Sprintf(uri, id))
 	if err != nil {
-		return nil, err
+		return MusicDetail{}, err
 	}
 
 	var _md struct {
@@ -59,23 +59,23 @@ func (c *APIClient) Music(id int) (*MusicDetail, error) {
 
 	md := _md.MusicDetail
 
-	if md.Simple != nil {
+	if md.Simple.PlayCount != 0 {
 		md.Simple.Rank = tmp.MusicDetail.Rank[0].Rank
 	}
 
-	if md.Normal != nil {
+	if md.Normal.PlayCount != 0 {
 		md.Normal.Rank = tmp.MusicDetail.Rank[1].Rank
 	}
 
-	if md.Hard != nil {
+	if md.Hard.PlayCount != 0 {
 		md.Hard.Rank = tmp.MusicDetail.Rank[2].Rank
 	}
 
-	if md.HasEx && md.Extra != nil {
+	if md.HasEx && md.Extra.PlayCount != 0 {
 		md.Extra.Rank = tmp.MusicDetail.Rank[3].Rank
 	}
 
 	md.ImageURL = "https://mypage.groovecoaster.jp/sp/music/music_image.php?music_id=" + md.ID
 
-	return &md, nil
+	return md, nil
 }

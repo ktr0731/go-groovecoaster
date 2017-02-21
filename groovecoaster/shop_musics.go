@@ -11,7 +11,7 @@ type ShopMusics struct {
 }
 
 // ShopMusics fetches all musics in shop
-func (c *APIClient) ShopMusics() ([]*ShopMusics, error) {
+func (c *APIClient) ShopMusics() ([]ShopMusics, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_music_list.php"
 
 	data, err := c.get(uri)
@@ -20,7 +20,7 @@ func (c *APIClient) ShopMusics() ([]*ShopMusics, error) {
 	}
 
 	var sm struct {
-		ShopMusics []*ShopMusics `json:"product_list"`
+		ShopMusics []ShopMusics `json:"product_list"`
 	}
 	c.unmarshal(data, &sm)
 

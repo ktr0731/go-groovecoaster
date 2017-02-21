@@ -10,7 +10,7 @@ type ShopSkins struct {
 }
 
 // ShopSkins fetches all skins in shop
-func (c *APIClient) ShopSkins() ([]*ShopSkins, error) {
+func (c *APIClient) ShopSkins() ([]ShopSkins, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/shop_skin_list.php"
 
 	data, err := c.get(uri)
@@ -19,7 +19,7 @@ func (c *APIClient) ShopSkins() ([]*ShopSkins, error) {
 	}
 
 	var ss struct {
-		ShopSkins []*ShopSkins `json:"product_list"`
+		ShopSkins []ShopSkins `json:"product_list"`
 	}
 	c.unmarshal(data, &ss)
 

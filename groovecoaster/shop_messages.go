@@ -13,17 +13,17 @@ type Messages struct {
 
 // ShopMessages is the structure that is a set of each categories
 type ShopMessages struct {
-	Communication []*Messages
-	AA            []*Messages
-	Item          []*Messages
-	Music         []*Messages
-	Character     []*Messages
+	Communication []Messages
+	AA            []Messages
+	Item          []Messages
+	Music         []Messages
+	Character     []Messages
 }
 
 // ShopMessages fetches all musics in shop
-func (c *APIClient) ShopMessages() (*ShopMessages, error) {
+func (c *APIClient) ShopMessages() (ShopMessages, error) {
 	type shopMessages struct {
-		ShopMessages []*Messages `json:"product_list"`
+		ShopMessages []Messages `json:"product_list"`
 	}
 
 	const uri = "mypage.groovecoaster.jp/sp/#/sp_me/%d"
@@ -36,12 +36,12 @@ func (c *APIClient) ShopMessages() (*ShopMessages, error) {
 	)
 
 	var sm ShopMessages
-	var messages = make([][]*Messages, 5)
+	var messages = make([][]Messages, 5)
 	for i := Communication; i <= Character; i++ {
-		var message *shopMessages
+		var message shopMessages
 		data, err := c.get(fmt.Sprintf(uri, i+1))
 		if err != nil {
-			return nil, err
+			return ShopMessages{}, err
 		}
 
 		c.unmarshal(data, &message)
@@ -54,5 +54,5 @@ func (c *APIClient) ShopMessages() (*ShopMessages, error) {
 	sm.Item = messages[Item]
 	sm.Music = messages[Music]
 
-	return &sm, nil
+	return sm, nil
 }

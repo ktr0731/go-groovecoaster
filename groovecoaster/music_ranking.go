@@ -33,8 +33,8 @@ func (c *APIClient) MusicRankingPageCount(id int, diff Difficulty) (int, error) 
 	}
 
 	var rd struct {
-		Count   int               `json:",string"`
-		Ranking []*RankingElement `json:"score_rank"`
+		Count   int              `json:",string"`
+		Ranking []RankingElement `json:"score_rank"`
 	}
 	c.unmarshal(data, &rd)
 
@@ -46,7 +46,7 @@ func (c *APIClient) MusicRankingPageCount(id int, diff Difficulty) (int, error) 
 }
 
 // MusicRanking fetches a music score ranking by music id and difficulty
-func (c *APIClient) MusicRanking(id int, diff Difficulty, page int) ([]*RankingElement, error) {
+func (c *APIClient) MusicRanking(id int, diff Difficulty, page int) ([]RankingElement, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/score_ranking_bymusic_bydifficulty.php?music_id=%d&difficulty=%d&page=%d"
 
 	data, err := c.get(fmt.Sprintf(uri, id, diff, page))
@@ -55,8 +55,8 @@ func (c *APIClient) MusicRanking(id int, diff Difficulty, page int) ([]*RankingE
 	}
 
 	var rd struct {
-		Count   int               `json:",string"`
-		Ranking []*RankingElement `json:"score_rank"`
+		Count   int              `json:",string"`
+		Ranking []RankingElement `json:"score_rank"`
 	}
 	c.unmarshal(data, &rd)
 

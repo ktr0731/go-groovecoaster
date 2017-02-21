@@ -31,44 +31,44 @@ type Personal struct {
 }
 
 // Personal fetches player profile
-func (c *APIClient) Personal() (*Personal, error) {
+func (c *APIClient) Personal() (Personal, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/player_data.php"
 
 	data, err := c.get(uri)
 	if err != nil {
-		return nil, err
+		return Personal{}, err
 	}
 
 	var pd struct {
-		Personal   *Personal   `json:"player_data"`
-		Statistics *Statistics `json:"stage"`
+		Personal   Personal   `json:"player_data"`
+		Statistics Statistics `json:"stage"`
 	}
 	c.unmarshal(data, &pd)
 
-	if pd.Personal == nil {
-		return nil, fmt.Errorf("Invalid JSON structure")
+	if pd.Personal.Title == "" {
+		return Personal{}, fmt.Errorf("Invalid JSON structure")
 	}
 
 	return pd.Personal, nil
 }
 
 // Statistics fetches music statistics
-func (c *APIClient) Statistics() (*Statistics, error) {
+func (c *APIClient) Statistics() (Statistics, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/player_data.php"
 
 	data, err := c.get(uri)
 	if err != nil {
-		return nil, err
+		return Statistics{}, err
 	}
 
 	var pd struct {
-		Personal   *Personal   `json:"player_data"`
-		Statistics *Statistics `json:"stage"`
+		Personal   Personal   `json:"player_data"`
+		Statistics Statistics `json:"stage"`
 	}
 	c.unmarshal(data, &pd)
 
-	if pd.Statistics == nil {
-		return nil, fmt.Errorf("Invalid JSON structure")
+	if pd.Personal.Title != "" && pd.Statistics.All == 0 {
+		return Statistics{}, fmt.Errorf("Invalid JSON structure")
 	}
 
 	return pd.Statistics, nil
