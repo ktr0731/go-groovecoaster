@@ -1,9 +1,6 @@
 # go-groovecoaster
 [![GoDoc](https://godoc.org/github.com/lycoris0731/go-groovecoaster/groovecoaster?status.svg)](https://godoc.org/github.com/lycoris0731/go-groovecoaster/groovecoaster)
 [![CircleCI](https://circleci.com/gh/lycoris0731/go-groovecoaster.svg?style=svg&circle-token=64c5cb9f75f93df522eecfd16ddb0d1e517e1b42)](https://circleci.com/gh/lycoris0731/go-groovecoaster)
-[![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)  
-
-===
 
 ## **Attention**
 Unofficial library. So don't abuse this. Please take full responsibility for your action.
@@ -65,4 +62,4 @@ client.EventArchive()
 ```
 
 ## License
-Please see LICENSE.
+Please see [LICENSE](./LICENSE).
