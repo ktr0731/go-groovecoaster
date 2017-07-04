@@ -14,7 +14,7 @@ type EventArchive struct {
 func (c *APIClient) EventArchiveSummary() ([]EventArchive, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/event_info_list.php"
 
-	data, err := c.get(uri)
+	body, err := c.get(uri)
 	if err != nil {
 		return nil, err
 	}
@@ -22,7 +22,9 @@ func (c *APIClient) EventArchiveSummary() ([]EventArchive, error) {
 	var ea struct {
 		EventArchiveSummary []EventArchive `json:"event_info_list"`
 	}
-	c.unmarshal(data, &ea)
+	if err := c.decode(body, &ea); err != nil {
+		return nil, err
+	}
 
 	if ea.EventArchiveSummary == nil {
 		return nil, fmt.Errorf("invalid JSON structure: EventArchiveSummary()")

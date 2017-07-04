@@ -27,7 +27,7 @@ type RankingElement struct {
 func (c *APIClient) MusicRankingPageCount(id int, diff Difficulty) (int, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/score_ranking_bymusic_bydifficulty.php?music_id=%d&difficulty=%d"
 
-	data, err := c.get(fmt.Sprintf(uri, id, diff))
+	body, err := c.get(fmt.Sprintf(uri, id, diff))
 	if err != nil {
 		return -1, err
 	}
@@ -36,7 +36,10 @@ func (c *APIClient) MusicRankingPageCount(id int, diff Difficulty) (int, error) 
 		Count   int              `json:",string"`
 		Ranking []RankingElement `json:"score_rank"`
 	}
-	c.unmarshal(data, &rd)
+
+	if err := c.decode(body, &rd); err != nil {
+		return -1, err
+	}
 
 	if rd.Ranking == nil {
 		return -1, fmt.Errorf("invalid JSON structure")
@@ -49,7 +52,7 @@ func (c *APIClient) MusicRankingPageCount(id int, diff Difficulty) (int, error) 
 func (c *APIClient) MusicRanking(id int, diff Difficulty, page int) ([]RankingElement, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/score_ranking_bymusic_bydifficulty.php?music_id=%d&difficulty=%d&page=%d"
 
-	data, err := c.get(fmt.Sprintf(uri, id, diff, page))
+	body, err := c.get(fmt.Sprintf(uri, id, diff, page))
 	if err != nil {
 		return nil, err
 	}
@@ -58,7 +61,10 @@ func (c *APIClient) MusicRanking(id int, diff Difficulty, page int) ([]RankingEl
 		Count   int              `json:",string"`
 		Ranking []RankingElement `json:"score_rank"`
 	}
-	c.unmarshal(data, &rd)
+
+	if err := c.decode(body, &rd); err != nil {
+		return nil, err
+	}
 
 	if rd.Ranking == nil {
 		return nil, fmt.Errorf("invalid JSON structure")

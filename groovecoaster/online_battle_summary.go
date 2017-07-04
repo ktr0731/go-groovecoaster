@@ -21,7 +21,7 @@ type OnlineBattleSummary struct {
 func (c *APIClient) OnlineBattleSummary() ([]OnlineBattleSummary, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/online_battle_list.php"
 
-	data, err := c.get(uri)
+	body, err := c.get(uri)
 	if err != nil {
 		return nil, err
 	}
@@ -29,7 +29,9 @@ func (c *APIClient) OnlineBattleSummary() ([]OnlineBattleSummary, error) {
 	var obs struct {
 		OnlineBattleSummary []OnlineBattleSummary `json:"onlineBattleList"`
 	}
-	c.unmarshal(data, &obs)
+	if err := c.decode(body, &obs); err != nil {
+		return nil, err
+	}
 
 	return obs.OnlineBattleSummary, nil
 }

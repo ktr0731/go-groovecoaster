@@ -27,7 +27,7 @@ func (c *APIClient) ShopSummary() (Shop, error) {
 	}
 
 	var s Shop
-	c.unmarshal(data, &s)
+	c.decode(data, &s)
 
 	return s, nil
 }

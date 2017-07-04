@@ -12,7 +12,7 @@ type MusicSummary struct {
 func (c *APIClient) MusicSummary() ([]MusicSummary, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/music_list.php"
 
-	data, err := c.get(uri)
+	body, err := c.get(uri)
 	if err != nil {
 		return nil, err
 	}
@@ -20,7 +20,10 @@ func (c *APIClient) MusicSummary() ([]MusicSummary, error) {
 	var ms struct {
 		MusicSummary []MusicSummary `json:"music_list"`
 	}
-	c.unmarshal(data, &ms)
+
+	if err := c.decode(body, &ms); err != nil {
+		return nil, err
+	}
 
 	return ms.MusicSummary, nil
 }

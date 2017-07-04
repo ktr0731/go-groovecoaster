@@ -43,7 +43,7 @@ func (c *APIClient) Personal() (Personal, error) {
 		Personal   Personal   `json:"player_data"`
 		Statistics Statistics `json:"stage"`
 	}
-	c.unmarshal(data, &pd)
+	c.decode(data, &pd)
 
 	if pd.Personal.Title == "" {
 		return Personal{}, fmt.Errorf("Invalid JSON structure")
@@ -65,7 +65,7 @@ func (c *APIClient) Statistics() (Statistics, error) {
 		Personal   Personal   `json:"player_data"`
 		Statistics Statistics `json:"stage"`
 	}
-	c.unmarshal(data, &pd)
+	c.decode(data, &pd)
 
 	if pd.Personal.Title != "" && pd.Statistics.All == 0 {
 		return Statistics{}, fmt.Errorf("Invalid JSON structure")

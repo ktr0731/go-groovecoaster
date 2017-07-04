@@ -21,7 +21,7 @@ type EventSummary struct {
 func (c *APIClient) EventSummary() (EventSummary, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/event_data.php"
 
-	data, err := c.get(uri)
+	body, err := c.get(uri)
 	if err != nil {
 		return EventSummary{}, err
 	}
@@ -29,7 +29,10 @@ func (c *APIClient) EventSummary() (EventSummary, error) {
 	var es struct {
 		EventSummary `json:"event_data"`
 	}
-	c.unmarshal(data, &es)
+
+	if err := c.decode(body, &es); err != nil {
+		return EventSummary{}, err
+	}
 
 	if es.EventSummary.Title == "" {
 		return EventSummary{}, fmt.Errorf("invalid JSON structure")

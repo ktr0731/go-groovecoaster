@@ -3,7 +3,7 @@ package groovecoaster
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 )
@@ -25,32 +25,26 @@ func New() *APIClient {
 	}
 }
 
-func (c *APIClient) get(uri string) ([]byte, error) {
+func (c *APIClient) get(uri string) (io.ReadCloser, error) {
 	res, err := c.client.Get("https://" + uri)
 	if err != nil {
 		return nil, err
 	}
-	defer res.Body.Close()
 
 	if res.StatusCode != http.StatusOK {
 		return nil, fmt.Errorf("fetch %s failed (Status: %s)", uri, res.Status)
 	}
 
-	data, err := ioutil.ReadAll(res.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	if len(data) == 0 {
-		return nil, fmt.Errorf("response body is empty")
-	}
-
-	return data, nil
+	return res.Body, nil
 }
 
-func (c *APIClient) unmarshal(data []byte, i interface{}) error {
-	if err := json.Unmarshal(data, &i); err != nil {
-		return fmt.Errorf("unmarshal failed: %s", err)
+func (c *APIClient) decode(w io.ReadCloser, i interface{}) error {
+	if err := json.NewDecoder(w).Decode(i); err != nil {
+		return fmt.Errorf("decode failed: %s", err)
+	}
+
+	if err := w.Close(); err != nil {
+		return fmt.Errorf("writer closing failed: %s", err)
 	}
 
 	return nil

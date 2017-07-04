@@ -93,9 +93,9 @@ type TitleAward string
 
 // Awards is the type that represents set of each awards
 type Awards struct {
-	Avatars []AvatarAward `json:"avatar_award"`
-	Items   []ItemAward   `json:"item_award"`
-	Musics  []MusicAward  `json:"music_award"`
-	Titles  []TitleAward  `json:"title_award"`
-	Trophy  int           `json:"trophy_num"`
+	Avatars []AvatarAward        `json:"avatar_award"`
+	Items   map[string]ItemAward `json:"item_award"`
+	Musics  []MusicAward         `json:"music_award"`
+	Titles  []TitleAward         `json:"title_award"`
+	Trophy  int                  `json:"trophy_num"`
 }

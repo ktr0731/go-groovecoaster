@@ -27,7 +27,7 @@ type OnlineBattleDetail struct {
 func (c *APIClient) OnlineBattle(eid int, mid int) ([]OnlineBattleDetail, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/online_battle_detail.php?eid=%d&mid=%d"
 
-	data, err := c.get(fmt.Sprintf(uri, eid, mid))
+	body, err := c.get(fmt.Sprintf(uri, eid, mid))
 	if err != nil {
 		return nil, err
 	}
@@ -35,7 +35,10 @@ func (c *APIClient) OnlineBattle(eid int, mid int) ([]OnlineBattleDetail, error)
 	var obd struct {
 		OnlineBattle []OnlineBattleDetail
 	}
-	c.unmarshal(data, &obd)
+
+	if err := c.decode(body, &obd); err != nil {
+		return nil, err
+	}
 
 	return obd.OnlineBattle, nil
 }

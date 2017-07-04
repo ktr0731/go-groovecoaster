@@ -21,7 +21,7 @@ func (c *APIClient) ShopAvatars() ([]ShopAvatars, error) {
 	var sa struct {
 		ShopAvatars []ShopAvatars `json:"product_list"`
 	}
-	c.unmarshal(data, &sa)
+	c.decode(data, &sa)
 
 	return sa.ShopAvatars, nil
 }

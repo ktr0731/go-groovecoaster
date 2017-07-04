@@ -23,7 +23,7 @@ func (c *APIClient) ShopItems() ([]ShopItems, error) {
 	var si struct {
 		ShopItems []ShopItems `json:"item_list"`
 	}
-	c.unmarshal(data, &si)
+	c.decode(data, &si)
 
 	return si.ShopItems, nil
 }

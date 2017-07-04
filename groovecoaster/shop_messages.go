@@ -44,7 +44,7 @@ func (c *APIClient) ShopMessages() (ShopMessages, error) {
 			return ShopMessages{}, err
 		}
 
-		c.unmarshal(data, &message)
+		c.decode(data, &message)
 		messages[i] = message.ShopMessages
 	}
 

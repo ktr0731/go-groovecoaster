@@ -37,7 +37,7 @@ type MusicDetail struct {
 func (c *APIClient) Music(id int) (MusicDetail, error) {
 	const uri = "mypage.groovecoaster.jp/sp/json/music_detail.php?music_id=%d"
 
-	data, err := c.get(fmt.Sprintf(uri, id))
+	body, err := c.get(fmt.Sprintf(uri, id))
 	if err != nil {
 		return MusicDetail{}, err
 	}
@@ -54,8 +54,12 @@ func (c *APIClient) Music(id int) (MusicDetail, error) {
 		} `json:"music_detail"`
 	}
 
-	c.unmarshal(data, &_md)
-	c.unmarshal(data, &tmp)
+	if err := c.decode(body, &_md); err != nil {
+		return MusicDetail{}, nil
+	}
+	if err := c.decode(body, &tmp); err != nil {
+		return MusicDetail{}, nil
+	}
 
 	md := _md.MusicDetail
 
